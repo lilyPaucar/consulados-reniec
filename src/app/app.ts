@@ -43,9 +43,9 @@ export class App {
     {
       city: 'Madrid',
       country: 'España',
-      phone: '34 912 345 678',
-      address: 'Calle Velázquez, 10, 28001 Madrid, España',
-      email: 'consultas@consuladoperumadrid.es'
+      phone: '+34-91-5629022 Ó +34-91-5629012 , SOLO EMERGENCIA: +34-669701608',
+      address: '28008, P.º del Pintor Rosales, 30, 28008 Madrid, España',
+      email: 'info@consuladoperumadrid.org'
     },
     {
       city: 'Barcelona',

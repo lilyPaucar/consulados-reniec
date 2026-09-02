@@ -67,7 +67,7 @@
         <div>
           <div class="text-[#0f3b75] font-extrabold text-xs lg:text-sm uppercase tracking-wide">Atención Telefónica
           </div>
-          <div class="font-bold text-slate-800 text-sm lg:text-base">{{ selectedLocation().phone }}</div>
+          <div class="font-bold text-slate-800 text-sm lg:text-base leading-tight">{{ selectedLocation().phone }}</div>
         </div>
       </div>
 
@@ -81,7 +81,7 @@
         </div>
         <div>
           <div class="text-[#0f3b75] font-extrabold text-xs lg:text-sm uppercase tracking-wide">Correo Electrónico</div>
-          <div class="font-bold text-slate-800 text-sm lg:text-base truncate max-w-[240px]">{{ selectedLocation().email
+          <div class="font-bold text-slate-800 text-sm lg:text-base leading-tight">{{ selectedLocation().email
             }}</div>
         </div>
       </div>
@@ -105,6 +105,46 @@
 
     <!-- ==================== GRID DE TARJETAS 2x2 ==================== -->
     <main class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+      
+      <!-- ==================== TARJETA IMAGEN CONSULADO ==================== -->
+      <article
+        class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
+        <div>
+            <img src="MADRID.jpg" alt="">
+        </div> 
+      </article>
+       <article class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow p-6">
+    
+        <!-- Contenedor principal con items-center para centrar todo su contenido vertical -->
+        <div class="col-span-12 sm:col-span-7 flex flex-col justify-center items-center space-y-4">
+            
+            <!-- Título horario -->
+            <h2 class="font-black text-[#0f3b75] text-xl sm:text-2xl leading-tight text-center">
+                Horario de Atencion
+            </h2>
+
+            <!-- dias de atencion -->
+            <ul class="w-full max-w-md space-y-3 text-slate-700 font-medium">
+                <li class="flex items-start space-x-2 border-b border-slate-100 pb-2">
+                    <span class="text-red-600 font-bold">»</span>
+                    <span>De Lunes a Viernes de 08:30-14:00 h (trámites presenciales con cita)</span>
+                </li>
+            </ul>
+          <!--RECOGER DNI -->
+            <h2 class="font-black text-[#0f3b75] text-xl sm:text-2xl leading-tight text-center">
+                Horario de Recoger DNI
+            </h2>
+
+            <!-- dias de atencion -->
+            <ul class="w-full max-w-md space-y-3 text-slate-700 font-medium">
+                <li class="flex items-start space-x-2 border-b border-slate-100 pb-2">
+                    <span class="text-red-600 font-bold">»</span>
+                    <span>Martes y Jueves de 09:00-13:00 h (Atención sin citas)</span>
+                </li>
+            </ul>
+
+        </div>
+    </article>
 
       <!-- ==================== TARJETA 1: APP DNI BIOFACIAL ==================== -->
       <article
@@ -160,23 +200,15 @@
             <div
               class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
               <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>Renovación de DNI</span>
+              <span>Renovación por caducidad del DNIe</span>
             </div>
             <div
               class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
               <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>Duplicado de DNI</span>
+              <span>Duplicado de DNIe</span>
             </div>
-            <div
-              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
-              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>Actualización de Domicilio</span>
-            </div>
-            <div
-              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
-              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>Copias Certificadas web</span>
-            </div>
+            
+            
           </div>
         </div>
 
@@ -188,8 +220,7 @@
                 class="border-b border-slate-200 text-slate-900 text-xs sm:text-sm font-extrabold uppercase tracking-wider bg-slate-100/70">
                 <th class="py-2.5 px-2 border-r border-slate-200 font-extrabold">Requerimientos</th>
                 <th class="py-2.5 px-2 border-r border-slate-200 font-extrabold">Documentos</th>
-                <th class="py-2.5 px-2 border-r border-slate-200 font-extrabold">Tiempo</th>
-                <th class="py-2.5 px-2 font-extrabold">Costo</th>
+                <th class="py-2.5 px-2 font-extrabold">Seguimiento de tramite</th>
               </tr>
             </thead>
             <tbody>
@@ -209,20 +240,13 @@
                     <span>Ver documentos</span>
                   </button>
                 </td>
-                <td class="py-3 px-2 border-r border-slate-200 align-middle">
-                  <div class="flex items-center justify-center gap-1.5">
-                    <svg class="w-4 h-4 text-red-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <circle cx="12" cy="12" r="9" stroke-width="2" />
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7v5l3 3" />
-                    </svg>
-                    <span>26 mins</span>
-                  </div>
-                </td>
-                <td class="py-3 px-2 align-middle">
+                  <td class="py-3 px-2 align-middle">
                   <div class="flex items-center justify-center gap-1.5 font-black text-slate-900 text-sm sm:text-base">
-                    <span
-                      class="w-5 h-5 rounded-full bg-[#c01823] text-white inline-flex items-center justify-center text-[10px] font-black shrink-0">S/</span>
-                    <span>S/ 30.00</span>
+                                        
+                      <a href="https://serviciosportal.reniec.gob.pe/cetdnipi/inicio.htm" class="inline-flex items-center justify-center w-full max-w-xs px-4 py-2 text-sm font-bold text-white bg-[#c01823] rounded-lg hover:bg-red-700 transition-colors shadow-sm">
+                        Clic Aqui
+                      </a>
+                    
                   </div>
                 </td>
               </tr>
@@ -278,6 +302,11 @@
               <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
               <span>Rectificación de datos</span>
             </div>
+             <div
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
+              <span>Rectificación de imagenes y datos</span>
+            </div>
 
             <!-- Banner Celeste de Modalidad y DHL con dos tonos -->
             <div class="overflow-hidden rounded-xl border border-[#7cc4ea] shadow-xs mt-1">
@@ -300,9 +329,7 @@
               <tr
                 class="border-b border-slate-200 text-slate-900 text-xs sm:text-sm font-extrabold uppercase tracking-wider bg-slate-100/70">
                 <th class="py-2.5 px-2 border-r border-slate-200 font-extrabold">Requerimientos</th>
-                <th class="py-2.5 px-2 border-r border-slate-200 font-extrabold">Documentos</th>
-                <th class="py-2.5 px-2 border-r border-slate-200 font-extrabold">Tiempo</th>
-                <th class="py-2.5 px-2 font-extrabold">Costo</th>
+                <th class="py-2.5 px-2 font-extrabold">Documentos</th>
               </tr>
             </thead>
             <tbody>
@@ -322,23 +349,8 @@
                     <span>Ver documentos</span>
                   </button>
                 </td>
-                <td class="py-3 px-2 border-r border-slate-200 align-middle">
-                  <div class="flex items-center justify-center gap-1.5">
-                    <svg class="w-4 h-4 text-red-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <circle cx="12" cy="12" r="9" stroke-width="2" />
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7v5l3 3" />
-                    </svg>
-                    <span>25 min</span>
-                  </div>
-                </td>
-                <td class="py-3 px-2 align-middle">
-                  <div class="flex items-center justify-center gap-1.5 font-black text-slate-900 text-sm sm:text-base">
-                    <span
-                      class="w-5 h-5 rounded-full bg-[#c01823] text-white inline-flex items-center justify-center text-[10px] font-black shrink-0">S/</span>
-                    <span>S/ 10.00</span>
-                  </div>
-                </td>
-              </tr>
+                
+             </tr>
             </tbody>
           </table>
         </div>
@@ -416,89 +428,11 @@
         </div>
       </article>
 
-      <!-- ==================== TARJETA 4: 4. CERTIFICACIONES Y OTROS ==================== -->
       <article
         class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden flex flex-col hover:shadow-md transition-shadow">
         <!-- Header Rojo Carmesí -->
         <header class="bg-[#c01823] text-white font-extrabold text-lg sm:text-xl px-6 py-3 tracking-wide uppercase">
-          4. CERTIFICACIONES Y OTROS
-        </header>
-
-        <div class="grid grid-cols-12 p-6 items-center gap-6 flex-1">
-          <!-- Columna Izquierda (Ícono Certificado y Trámites Rápidos) -->
-          <div
-            class="col-span-12 sm:col-span-5 flex flex-col items-center justify-center text-center sm:border-r sm:border-slate-100 sm:pr-6">
-            <!-- Icono Documento Certificado con Sello Rojo -->
-            <div class="relative">
-              <svg class="w-16 h-20 text-[#0f3b75]" fill="none" stroke="currentColor" viewBox="0 0 24 28">
-                <!-- Hoja de documento con esquina doblada -->
-                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                  d="M4 2h10l6 6v18a2 2 0 01-2 2H4a2 2 0 01-2-2V4a2 2 0 012-2z" fill="#f8fafc" />
-                <!-- Líneas de texto -->
-                <line x1="6" y1="10" x2="14" y2="10" stroke-width="2" stroke-linecap="round" />
-                <line x1="6" y1="14" x2="16" y2="14" stroke-width="2" stroke-linecap="round" />
-                <line x1="6" y1="18" x2="12" y2="18" stroke-width="2" stroke-linecap="round" />
-              </svg>
-              <!-- Sello rojo con lazos de cinta en la esquina inferior derecha -->
-              <div class="absolute -bottom-2 -right-2 flex flex-col items-center">
-                <div
-                  class="w-8 h-8 rounded-full bg-[#c01823] border-2 border-white flex items-center justify-center shadow-xs">
-                  <svg class="w-5 h-5 text-white stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round"
-                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                  </svg>
-                </div>
-              </div>
-            </div>
-
-            <!-- Título Trámites Rápidos -->
-            <h2 class="font-black text-[#0f3b75] text-2xl leading-tight mt-3">
-              Trámites
-            </h2>
-            <div
-              class="bg-[#c01823] text-white font-extrabold text-lg sm:text-xl px-5 py-0.5 rounded-lg mt-1 shadow-xs tracking-wide">
-              Rápidos
-            </div>
-          </div>
-
-          <!-- Columna Derecha (Lista + Estadística Mensual) -->
-          <div class="col-span-12 sm:col-span-7 flex flex-col justify-between space-y-2 sm:pl-2">
-            <div
-              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
-              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>Certificado de Supervivencia</span>
-            </div>
-            <div
-              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
-              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>Autenticación de Firmas</span>
-            </div>
-
-
-            <!-- Banner Rojo con Estadística Mensual -->
-            <div class="overflow-hidden rounded-xl mt-1 border border-red-200/80 shadow-xs">
-              <div class="bg-[#c01823] text-white text-xs sm:text-sm font-black px-3.5 py-1.5">
-                Estadística Mensual:
-              </div>
-              <div class="bg-[#fef2f2] p-2.5 text-xs sm:text-sm text-slate-800 leading-snug">
-                <p class="font-medium text-slate-900">
-                  En el último mes procesamos <strong class="font-black text-slate-950 text-sm sm:text-base">999
-                    atenciones</strong>.
-                </p>
-                <p class="font-semibold text-slate-800 mt-0.5">
-                  ¡Use canales digitales para ahorrar tiempo!
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
-
-      <article
-        class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden flex flex-col hover:shadow-md transition-shadow">
-        <!-- Header Rojo Carmesí -->
-        <header class="bg-[#c01823] text-white font-extrabold text-lg sm:text-xl px-6 py-3 tracking-wide uppercase">
-          5. CIUDADANO DIGITAL
+          4. CIUDADANO DIGITAL
         </header>
 
         <div class="grid grid-cols-12 p-6 items-center gap-6 flex-1">
@@ -513,12 +447,12 @@
 
             <!-- Título Trámites Digital -->
             <h2 class="font-black text-[#0f3b75] text-2xl leading-tight mt-1.5">
-              Trámites
+              Trámite Digital
             </h2>
-            <div
-              class="bg-[#c01823] text-white font-extrabold text-lg sm:text-xl px-5 py-0.5 rounded-lg mt-1 shadow-xs tracking-wide">
-              Digital
-            </div>
+            <a href="https://pki.reniec.gob.pe/ciudadanodigital/dnie/inicio" class="mt-4 inline-flex items-center justify-center w-40 max-w-xs px-4 py-3 text-m font-bold text-white bg-[#c01823] rounded-lg hover:bg-red-700 transition-colors shadow-sm">
+                   Inicie Aqui
+             </a> 
+            
           </div>
 
           <!-- Columna Derecha (Lista + Estadística Mensual) -->
