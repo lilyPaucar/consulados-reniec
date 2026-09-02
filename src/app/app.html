@@ -1,0 +1,768 @@
+<div class="min-h-screen bg-[#eaf0f6] py-6 px-4 sm:px-6 lg:px-8 flex flex-col items-center justify-center">
+  <div class="w-full max-w-[1280px] mx-auto space-y-4">
+
+    <!-- ==================== HEADER PRINCIPAL ==================== -->
+    <header class="flex flex-col lg:flex-row items-center justify-between gap-4 py-2">
+
+      <!-- Logos: RENIEC -->
+      <div class="flex items-center gap-3 sm:gap-4 shrink-0">
+        <img src="reniec-logo.png" alt="RENIEC" class="h-12 sm:h-14 w-auto object-contain" />
+      </div>
+
+      <!-- Título Central -->
+      <div class="text-center flex-1 px-2">
+        <h1
+          class="text-2xl sm:text-3xl lg:text-[32px] font-black text-[#0f3b75] tracking-tight uppercase leading-tight font-['Montserrat']">
+          Cartera de Servicios Consulares
+        </h1>
+      </div>
+
+      <!-- Selector de Ubicación / Dropdown -->
+      <div class="relative shrink-0">
+        <button (click)="toggleDropdown()" type="button"
+          class="bg-[#c01823] hover:bg-[#a5121b] text-white font-bold text-sm lg:text-base px-4 py-2.5 rounded-xl flex items-center gap-2 shadow-sm transition-colors cursor-pointer">
+          <span>Ubicación: <strong class="font-extrabold">{{ selectedLocation().city }}, {{ selectedLocation().country
+              }}</strong></span>
+          <svg class="w-4 h-4 transition-transform duration-200" [class.rotate-180]="isDropdownOpen()" fill="none"
+            stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7" />
+          </svg>
+        </button>
+
+        <!-- Dropdown Menu -->
+        @if (isDropdownOpen()) {
+        <div
+          class="absolute right-0 mt-2 w-72 bg-white rounded-xl shadow-xl border border-slate-200 py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150">
+          <div class="px-3 py-1.5 text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100">
+            Sedes Consulares
+          </div>
+          @for (loc of locations; track loc.city) {
+          <button (click)="selectLocation(loc)"
+            class="w-full text-left px-4 py-2 text-sm text-slate-700 hover:bg-red-50 hover:text-[#c01823] flex items-center justify-between font-medium transition-colors"
+            [class.font-bold]="loc.city === selectedLocation().city"
+            [class.text-[#c01823]]="loc.city === selectedLocation().city">
+            <span>{{ loc.city }}, {{ loc.country }}</span>
+            @if (loc.city === selectedLocation().city) {
+            <span class="text-xs bg-red-100 text-[#c01823] px-2 py-0.5 rounded-full font-bold">Activo</span>
+            }
+          </button>
+          }
+        </div>
+        }
+      </div>
+    </header>
+
+    <!-- ==================== BARRA DE INFORMACIÓN Y CONTACTO ==================== -->
+    <section
+      class="bg-white rounded-2xl shadow-sm border border-slate-200/90 px-6 py-4 grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
+
+      <!-- Atención Telefónica -->
+      <div class="flex items-center gap-3 justify-center md:justify-start">
+        <div class="text-[#0f3b75] shrink-0">
+          <svg class="w-6 h-6 lg:w-7 lg:h-7" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M6.62 10.79a15.053 15.053 0 006.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+          </svg>
+        </div>
+        <div>
+          <div class="text-[#0f3b75] font-extrabold text-xs lg:text-sm uppercase tracking-wide">Atención Telefónica
+          </div>
+          <div class="font-bold text-slate-800 text-sm lg:text-base">{{ selectedLocation().phone }}</div>
+        </div>
+      </div>
+
+      <!-- Correo Electrónico -->
+      <div class="flex items-center gap-3 justify-center md:justify-start md:border-x md:border-slate-200 md:px-4">
+        <div class="text-[#0f3b75] shrink-0">
+          <svg class="w-6 h-6 lg:w-7 lg:h-7" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+          </svg>
+        </div>
+        <div>
+          <div class="text-[#0f3b75] font-extrabold text-xs lg:text-sm uppercase tracking-wide">Correo Electrónico</div>
+          <div class="font-bold text-slate-800 text-sm lg:text-base truncate max-w-[240px]">{{ selectedLocation().email
+            }}</div>
+        </div>
+      </div>
+
+      <!-- Dirección -->
+      <div class="flex items-center gap-3 justify-center md:justify-start">
+        <div class="text-[#0f3b75] shrink-0">
+          <svg class="w-6 h-6 lg:w-7 lg:h-7" fill="currentColor" viewBox="0 0 24 24">
+            <path
+              d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+          </svg>
+        </div>
+        <div>
+          <div class="text-[#0f3b75] font-extrabold text-xs lg:text-sm uppercase tracking-wide">Dirección</div>
+          <div class="font-bold text-slate-800 text-sm lg:text-base leading-tight">{{ selectedLocation().address }}
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ==================== GRID DE TARJETAS 2x2 ==================== -->
+    <main class="grid grid-cols-1 lg:grid-cols-2 gap-6 items-stretch">
+
+      <!-- ==================== TARJETA 1: APP DNI BIOFACIAL ==================== -->
+      <article
+        class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
+        <div class="grid grid-cols-12 p-6 items-center gap-6 flex-1">
+
+          <!-- Columna Izquierda (Ícono y Estado) -->
+          <div
+            class="col-span-12 sm:col-span-5 flex flex-col items-center justify-center text-center sm:border-r sm:border-slate-100 sm:pr-6">
+            <!-- Smartphone con reconocimiento facial -->
+            <div
+              class="relative w-20 h-28 border-[3.5px] border-[#0f3b75] rounded-2xl flex flex-col items-center justify-between p-1.5 bg-slate-50 shadow-inner">
+              <!-- Altavoz superior -->
+              <div class="w-5 h-1 bg-[#0f3b75] rounded-full"></div>
+
+              <!-- Marco de escaneo facial y rostro -->
+              <div class="relative w-12 h-14 flex items-center justify-center">
+                <!-- Esquinas de escaneo -->
+                <div class="absolute inset-0 border border-blue-400 rounded-sm"></div>
+                <div class="absolute -top-0.5 -left-0.5 w-2.5 h-2.5 border-t-2 border-l-2 border-[#0f3b75]"></div>
+                <div class="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 border-t-2 border-r-2 border-[#0f3b75]"></div>
+                <div class="absolute -bottom-0.5 -left-0.5 w-2.5 h-2.5 border-b-2 border-l-2 border-[#0f3b75]"></div>
+                <div class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 border-b-2 border-r-2 border-[#0f3b75]"></div>
+
+                <!-- Avatar de rostro -->
+                <svg class="w-9 h-9 text-[#0f3b75]" fill="currentColor" viewBox="0 0 24 24">
+                  <path
+                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                </svg>
+              </div>
+
+              <!-- Botón inferior del móvil -->
+              <div class="w-3 h-3 rounded-full border-2 border-[#0f3b75]"></div>
+            </div>
+
+            <!-- Título del servicio -->
+            <h2 class="font-black text-[#0f3b75] text-xl sm:text-2xl leading-tight mt-3">
+              App DNI<br />Biofacial
+            </h2>
+
+            <!-- Badge ACTIVO -->
+            <div
+              class="mt-3 inline-flex items-center gap-1.5 bg-[#16a34a] text-white text-xs sm:text-sm font-extrabold px-4 py-1 rounded-full uppercase tracking-wider shadow-xs">
+              <svg class="w-4 h-4 stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              ACTIVO
+            </div>
+          </div>
+
+          <!-- Columna Derecha (Lista de Trámites) -->
+          <div class="col-span-12 sm:col-span-7 flex flex-col justify-center space-y-2 sm:pl-2">
+            <div
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
+              <span>Renovación de DNI</span>
+            </div>
+            <div
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
+              <span>Duplicado de DNI</span>
+            </div>
+            <div
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
+              <span>Actualización de Domicilio</span>
+            </div>
+            <div
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
+              <span>Copias Certificadas web</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== TABLA INFERIOR DE METADATOS ==================== -->
+        <div class="bg-[#f8fafc] border-t border-slate-200">
+          <table class="w-full border-collapse table-fixed text-center">
+            <thead>
+              <tr
+                class="border-b border-slate-200 text-slate-900 text-xs sm:text-sm font-extrabold uppercase tracking-wider bg-slate-100/70">
+                <th class="py-2.5 px-2 border-r border-slate-200 font-extrabold">Requerimientos</th>
+                <th class="py-2.5 px-2 border-r border-slate-200 font-extrabold">Documentos</th>
+                <th class="py-2.5 px-2 border-r border-slate-200 font-extrabold">Tiempo</th>
+                <th class="py-2.5 px-2 font-extrabold">Costo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="text-xs sm:text-sm text-slate-700 font-semibold">
+                <td class="py-3 px-2 border-r border-slate-200 align-middle">
+                  1. App DNI y de DNI
+                </td>
+                <td class="py-3 px-2 border-r border-slate-200 align-middle">
+                  <button type="button" (click)="openDocumentsModal('biofacial')"
+                    class="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 hover:bg-[#c01823] text-[#c01823] hover:text-white border border-red-200 font-bold text-xs sm:text-sm shadow-xs transition-all cursor-pointer group"
+                    title="Ver lista completa de requisitos y documentos">
+                    <svg class="w-4 h-4 text-[#c01823] group-hover:text-white shrink-0 transition-colors"
+                      fill="currentColor" viewBox="0 0 24 24">
+                      <path
+                        d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+                    </svg>
+                    <span>Ver documentos</span>
+                  </button>
+                </td>
+                <td class="py-3 px-2 border-r border-slate-200 align-middle">
+                  <div class="flex items-center justify-center gap-1.5">
+                    <svg class="w-4 h-4 text-red-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="9" stroke-width="2" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7v5l3 3" />
+                    </svg>
+                    <span>26 mins</span>
+                  </div>
+                </td>
+                <td class="py-3 px-2 align-middle">
+                  <div class="flex items-center justify-center gap-1.5 font-black text-slate-900 text-sm sm:text-base">
+                    <span
+                      class="w-5 h-5 rounded-full bg-[#c01823] text-white inline-flex items-center justify-center text-[10px] font-black shrink-0">S/</span>
+                    <span>S/ 30.00</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <!-- ==================== TARJETA 2: SIO ==================== -->
+      <article
+        class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
+        <div class="grid grid-cols-12 p-6 items-center gap-6 flex-1">
+
+          <!-- Columna Izquierda (Logo SIO y Estado) -->
+          <div
+            class="col-span-12 sm:col-span-5 flex flex-col items-center justify-center text-center sm:border-r sm:border-slate-100 sm:pr-6">
+            <div class="font-black text-[#0f3b75] text-5xl sm:text-6xl tracking-tight leading-none">
+              SIO
+            </div>
+            <h2 class="font-bold text-[#0f3b75] text-sm sm:text-base leading-tight mt-2 uppercase">
+              Sistema Integrado<br />Operativo
+            </h2>
+
+            <!-- Badge ACTIVO -->
+            <div
+              class="mt-3 inline-flex items-center gap-1.5 bg-[#16a34a] text-white text-xs sm:text-sm font-extrabold px-4 py-1 rounded-full uppercase tracking-wider shadow-xs">
+              <svg class="w-4 h-4 stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              ACTIVO
+            </div>
+          </div>
+
+          <!-- Columna Derecha (Lista + Banner Modalidad) -->
+          <div class="col-span-12 sm:col-span-7 flex flex-col justify-between space-y-2 sm:pl-2">
+            <div
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
+              <span>Inscripción por primera vez</span>
+            </div>
+            <div
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
+              <span>Canje de Libreta Electoral</span>
+            </div>
+            <div
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
+              <span>Recojo de DNI</span>
+            </div>
+            <div
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
+              <span>Rectificación de datos</span>
+            </div>
+
+            <!-- Banner Celeste de Modalidad y DHL con dos tonos -->
+            <div class="overflow-hidden rounded-xl border border-[#7cc4ea] shadow-xs mt-1">
+              <!-- Parte superior más oscura -->
+              <div class="bg-[#489cd3] text-white text-xs sm:text-sm font-bold text-center py-1.5 px-3">
+                Modalidad: <span class="font-black uppercase tracking-wide">CAPTURA EN VIVO</span>
+              </div>
+              <!-- Parte inferior más clara -->
+              <div class="bg-[#dcf0fb] text-[#0f3b75] text-xs sm:text-sm font-bold text-center py-1.5 px-3">
+                Envío de DNI físico vía: <span class="font-extrabold">DHL - SEMANAL</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ==================== TABLA INFERIOR DE METADATOS ==================== -->
+        <div class="bg-[#f8fafc] border-t border-slate-200">
+          <table class="w-full border-collapse table-fixed text-center">
+            <thead>
+              <tr
+                class="border-b border-slate-200 text-slate-900 text-xs sm:text-sm font-extrabold uppercase tracking-wider bg-slate-100/70">
+                <th class="py-2.5 px-2 border-r border-slate-200 font-extrabold">Requerimientos</th>
+                <th class="py-2.5 px-2 border-r border-slate-200 font-extrabold">Documentos</th>
+                <th class="py-2.5 px-2 border-r border-slate-200 font-extrabold">Tiempo</th>
+                <th class="py-2.5 px-2 font-extrabold">Costo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="text-xs sm:text-sm text-slate-700 font-semibold">
+                <td class="py-3 px-2 border-r border-slate-200 align-middle">
+                  1. Inscripción por DNI
+                </td>
+                <td class="py-3 px-2 border-r border-slate-200 align-middle">
+                  <button type="button" (click)="openDocumentsModal('sio')"
+                    class="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 hover:bg-[#c01823] text-[#c01823] hover:text-white border border-red-200 font-bold text-xs sm:text-sm shadow-xs transition-all cursor-pointer group"
+                    title="Ver lista completa de requisitos y documentos">
+                    <svg class="w-4 h-4 text-[#c01823] group-hover:text-white shrink-0 transition-colors"
+                      fill="currentColor" viewBox="0 0 24 24">
+                      <path
+                        d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
+                    </svg>
+                    <span>Ver documentos</span>
+                  </button>
+                </td>
+                <td class="py-3 px-2 border-r border-slate-200 align-middle">
+                  <div class="flex items-center justify-center gap-1.5">
+                    <svg class="w-4 h-4 text-red-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="9" stroke-width="2" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 7v5l3 3" />
+                    </svg>
+                    <span>25 min</span>
+                  </div>
+                </td>
+                <td class="py-3 px-2 align-middle">
+                  <div class="flex items-center justify-center gap-1.5 font-black text-slate-900 text-sm sm:text-base">
+                    <span
+                      class="w-5 h-5 rounded-full bg-[#c01823] text-white inline-flex items-center justify-center text-[10px] font-black shrink-0">S/</span>
+                    <span>S/ 10.00</span>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <!-- ==================== TARJETA 3: 3. REGISTRO CIVIL CONSULAR ==================== -->
+      <article
+        class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden flex flex-col hover:shadow-md transition-shadow">
+        <!-- Header Azul Marino -->
+        <header class="bg-[#0f3b75] text-white font-extrabold text-lg sm:text-xl px-6 py-3 tracking-wide uppercase">
+          3. REGISTRO CIVIL CONSULAR
+        </header>
+
+        <div class="grid grid-cols-12 p-6 items-center gap-6 flex-1">
+          <!-- Columna Izquierda (Ícono Columns SIRCM y Estado) -->
+          <div
+            class="col-span-12 sm:col-span-5 flex flex-col items-center justify-center text-center sm:border-r sm:border-slate-100 sm:pr-6">
+            <!-- Icono clásico de Edificio Institucional / 4 Columnas -->
+            <div class="text-[#0f3b75] flex flex-col items-center">
+              <svg class="w-24 h-20" fill="currentColor" viewBox="0 0 64 48">
+                <!-- Techo / Frontón -->
+                <polygon points="32,2 4,14 60,14" />
+                <!-- Cornisa superior -->
+                <rect x="6" y="15" width="52" height="3" rx="1" />
+                <!-- 4 Columnas -->
+                <rect x="10" y="20" width="7" height="18" rx="1" />
+                <rect x="22" y="20" width="7" height="18" rx="1" />
+                <rect x="35" y="20" width="7" height="18" rx="1" />
+                <rect x="47" y="20" width="7" height="18" rx="1" />
+                <!-- Base escalonada -->
+                <rect x="6" y="40" width="52" height="3" rx="1" />
+                <rect x="2" y="44" width="60" height="4" rx="1" />
+              </svg>
+            </div>
+
+            <!-- Título SIRCM -->
+            <h2 class="font-black text-[#0f3b75] text-2xl sm:text-3xl tracking-wider mt-1.5">
+              SIRCM
+            </h2>
+
+            <!-- Badge EN LÍNEA -->
+            <div
+              class="mt-3 inline-flex items-center gap-1.5 bg-[#16a34a] text-white text-xs sm:text-sm font-extrabold px-4 py-1 rounded-full uppercase tracking-wider shadow-xs">
+              <svg class="w-4 h-4 stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              EN LÍNEA
+            </div>
+          </div>
+
+          <!-- Columna Derecha (Lista + Banner Verde) -->
+          <div class="col-span-12 sm:col-span-7 flex flex-col justify-between space-y-2 sm:pl-2">
+            <div
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
+              <span>Inscripción de Nacimiento</span>
+            </div>
+            <div
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
+              <span>Registro de Matrimonio</span>
+            </div>
+            <div
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
+              <span>Registro de Defunción</span>
+            </div>
+
+            <!-- Banner Verde de Actas -->
+            <div
+              class="bg-[#16a34a] text-white rounded-xl p-3 text-center text-xs sm:text-sm font-bold leading-tight shadow-xs mt-1">
+              Actas interconectadas en tiempo real con RENIEC Perú.
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <!-- ==================== TARJETA 4: 4. CERTIFICACIONES Y OTROS ==================== -->
+      <article
+        class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden flex flex-col hover:shadow-md transition-shadow">
+        <!-- Header Rojo Carmesí -->
+        <header class="bg-[#c01823] text-white font-extrabold text-lg sm:text-xl px-6 py-3 tracking-wide uppercase">
+          4. CERTIFICACIONES Y OTROS
+        </header>
+
+        <div class="grid grid-cols-12 p-6 items-center gap-6 flex-1">
+          <!-- Columna Izquierda (Ícono Certificado y Trámites Rápidos) -->
+          <div
+            class="col-span-12 sm:col-span-5 flex flex-col items-center justify-center text-center sm:border-r sm:border-slate-100 sm:pr-6">
+            <!-- Icono Documento Certificado con Sello Rojo -->
+            <div class="relative">
+              <svg class="w-16 h-20 text-[#0f3b75]" fill="none" stroke="currentColor" viewBox="0 0 24 28">
+                <!-- Hoja de documento con esquina doblada -->
+                <path stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  d="M4 2h10l6 6v18a2 2 0 01-2 2H4a2 2 0 01-2-2V4a2 2 0 012-2z" fill="#f8fafc" />
+                <!-- Líneas de texto -->
+                <line x1="6" y1="10" x2="14" y2="10" stroke-width="2" stroke-linecap="round" />
+                <line x1="6" y1="14" x2="16" y2="14" stroke-width="2" stroke-linecap="round" />
+                <line x1="6" y1="18" x2="12" y2="18" stroke-width="2" stroke-linecap="round" />
+              </svg>
+              <!-- Sello rojo con lazos de cinta en la esquina inferior derecha -->
+              <div class="absolute -bottom-2 -right-2 flex flex-col items-center">
+                <div
+                  class="w-8 h-8 rounded-full bg-[#c01823] border-2 border-white flex items-center justify-center shadow-xs">
+                  <svg class="w-5 h-5 text-white stroke-[2.5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Título Trámites Rápidos -->
+            <h2 class="font-black text-[#0f3b75] text-2xl leading-tight mt-3">
+              Trámites
+            </h2>
+            <div
+              class="bg-[#c01823] text-white font-extrabold text-lg sm:text-xl px-5 py-0.5 rounded-lg mt-1 shadow-xs tracking-wide">
+              Rápidos
+            </div>
+          </div>
+
+          <!-- Columna Derecha (Lista + Estadística Mensual) -->
+          <div class="col-span-12 sm:col-span-7 flex flex-col justify-between space-y-2 sm:pl-2">
+            <div
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
+              <span>Certificado de Supervivencia</span>
+            </div>
+            <div
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
+              <span>Autenticación de Firmas</span>
+            </div>
+
+
+            <!-- Banner Rojo con Estadística Mensual -->
+            <div class="overflow-hidden rounded-xl mt-1 border border-red-200/80 shadow-xs">
+              <div class="bg-[#c01823] text-white text-xs sm:text-sm font-black px-3.5 py-1.5">
+                Estadística Mensual:
+              </div>
+              <div class="bg-[#fef2f2] p-2.5 text-xs sm:text-sm text-slate-800 leading-snug">
+                <p class="font-medium text-slate-900">
+                  En el último mes procesamos <strong class="font-black text-slate-950 text-sm sm:text-base">999
+                    atenciones</strong>.
+                </p>
+                <p class="font-semibold text-slate-800 mt-0.5">
+                  ¡Use canales digitales para ahorrar tiempo!
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+      <article
+        class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden flex flex-col hover:shadow-md transition-shadow">
+        <!-- Header Rojo Carmesí -->
+        <header class="bg-[#c01823] text-white font-extrabold text-lg sm:text-xl px-6 py-3 tracking-wide uppercase">
+          5. CIUDADANO DIGITAL
+        </header>
+
+        <div class="grid grid-cols-12 p-6 items-center gap-6 flex-1">
+          <!-- Columna Izquierda (Logo / Imagen Ciudadano Digital y Título) -->
+          <div
+            class="col-span-12 sm:col-span-5 flex flex-col items-center justify-center text-center sm:border-r sm:border-slate-100 sm:pr-6">
+            <!-- Imagen Ciudadano Digital Sin Fondo y Ajustada al Tamaño de los demás íconos -->
+            <div class="relative flex items-center justify-center min-h-[90px] sm:min-h-[105px]">
+              <img src="ciudadano.png" alt="Ciudadano Digital"
+                class="w-24 h-24 sm:w-30 sm:h-30 object-contain drop-shadow-md hover:scale-105 transition-transform duration-200" />
+            </div>
+
+            <!-- Título Trámites Digital -->
+            <h2 class="font-black text-[#0f3b75] text-2xl leading-tight mt-1.5">
+              Trámites
+            </h2>
+            <div
+              class="bg-[#c01823] text-white font-extrabold text-lg sm:text-xl px-5 py-0.5 rounded-lg mt-1 shadow-xs tracking-wide">
+              Digital
+            </div>
+          </div>
+
+          <!-- Columna Derecha (Lista + Estadística Mensual) -->
+          <div class="col-span-12 sm:col-span-7 flex flex-col justify-between space-y-2 sm:pl-2">
+            <div
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
+              <span>Verificar, Descargar y Renovar tus certificados digitales</span>
+            </div>
+            <div
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
+              <span>Actualizar el código PIN de seguridad</span>
+            </div>
+
+
+            <!-- Banner de Requisitos Técnicos -->
+            <div class="overflow-hidden rounded-xl mt-2 border border-slate-200 shadow-xs bg-slate-50/80">
+              <div
+                class="bg-[#0f3b75] text-white text-xs sm:text-sm font-black px-3.5 py-1.5 flex items-center justify-between">
+                <div class="flex items-center gap-1.5">
+                  <svg class="w-4 h-4 text-blue-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                  <span class="uppercase tracking-wide">Requisitos:</span>
+                </div>
+                <span
+                  class="text-[10px] bg-white/20 text-white font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Acceso
+                  Digital</span>
+              </div>
+              <div class="p-2.5 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
+
+                <!-- 1. DNIe V2.0 - V3.0 -->
+                <div
+                  class="flex items-center gap-2 bg-white p-2 rounded-lg border border-slate-200/90 shadow-xs hover:border-[#94b8dc] transition-colors">
+                  <div
+                    class="w-7 h-7 rounded-md bg-blue-50 text-[#0f3b75] flex items-center justify-center shrink-0 border border-blue-100">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <rect x="2" y="5" width="20" height="14" rx="2" stroke-width="2" />
+                      <circle cx="8" cy="12" r="2" stroke-width="2" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4m-4 4h4" />
+                    </svg>
+                  </div>
+                  <span class="font-bold text-slate-800 text-[11px] sm:text-xs leading-tight">DNIe V2.0 - V3.0</span>
+                </div>
+
+                <!-- 2. Lector SmartCard -->
+                <div
+                  class="flex items-center gap-2 bg-white p-2 rounded-lg border border-slate-200/90 shadow-xs hover:border-[#94b8dc] transition-colors">
+                  <div
+                    class="w-7 h-7 rounded-md bg-red-50 text-[#c01823] flex items-center justify-center shrink-0 border border-red-100">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M4 7v10c0 1.1.9 2 2 2h12a2 2 0 002-2V7M4 7h16M4 7l2-4h12l2 4M9 14h6" />
+                    </svg>
+                  </div>
+                  <span class="font-bold text-slate-800 text-[11px] sm:text-xs leading-tight">Lector SmartCard</span>
+                </div>
+
+                <!-- 3. APP IDPerú -->
+                <div
+                  class="flex items-center gap-2 bg-white p-2 rounded-lg border border-slate-200/90 shadow-xs hover:border-[#94b8dc] transition-colors">
+                  <div
+                    class="w-7 h-7 rounded-md bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-100">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <rect x="7" y="2" width="10" height="20" rx="2" stroke-width="2" />
+                      <circle cx="12" cy="18" r="1" fill="currentColor" />
+                    </svg>
+                  </div>
+                  <span class="font-bold text-slate-800 text-[11px] sm:text-xs leading-tight">APP IDPerú</span>
+                </div>
+
+                <!-- 4. Navegador Microsoft Edge -->
+                <div
+                  class="flex items-center gap-2 bg-white p-2 rounded-lg border border-slate-200/90 shadow-xs hover:border-[#94b8dc] transition-colors">
+                  <div
+                    class="w-7 h-7 rounded-md bg-sky-50 text-sky-700 flex items-center justify-center shrink-0 border border-sky-100">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <circle cx="12" cy="12" r="9" stroke-width="2" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M3.6 9h16.8M3.6 15h16.8M12 3a15.3 15.3 0 014 9 15.3 15.3 0 01-4 9 15.3 15.3 0 01-4-9 15.3 15.3 0 014-9z" />
+                    </svg>
+                  </div>
+                  <span class="font-bold text-slate-800 text-[11px] sm:text-xs leading-tight">Navegador Microsoft
+                    Edge</span>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </article>
+
+    </main>
+
+  </div>
+</div>
+
+<!-- ==================== MODAL DE DOCUMENTOS Y REQUISITOS ==================== -->
+@if (isDocsModalOpen() && selectedServiceDocs()) {
+<div
+  class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-200"
+  (click)="closeDocumentsModal()">
+  <div
+    class="relative w-full max-w-2xl bg-white rounded-2xl shadow-2xl overflow-hidden border border-slate-200 animate-in zoom-in-95 duration-200 max-h-[90vh] flex flex-col"
+    (click)="$event.stopPropagation()">
+
+    <!-- Modal Header -->
+    <div class="bg-[#0f3b75] text-white px-6 py-4 flex items-center justify-between shadow-sm shrink-0">
+      <div class="flex items-center gap-3">
+        <div
+          class="w-10 h-10 rounded-xl bg-white/10 flex items-center justify-center text-white shrink-0 border border-white/20">
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+          </svg>
+        </div>
+        <div>
+          <span class="text-xs font-bold text-blue-200 uppercase tracking-wider">Documentos y Requisitos</span>
+          <h2 class="text-lg sm:text-xl font-black leading-tight">{{ selectedServiceDocs()?.title }}</h2>
+        </div>
+      </div>
+
+      <!-- Close Button -->
+      <button (click)="closeDocumentsModal()" type="button"
+        class="w-9 h-9 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors cursor-pointer"
+        aria-label="Cerrar modal">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Modal Sub-header Info -->
+    <div
+      class="bg-slate-50 border-b border-slate-200 px-6 py-3 flex flex-wrap items-center justify-between gap-2 shrink-0">
+      <div class="text-xs sm:text-sm font-semibold text-slate-700">
+        {{ selectedServiceDocs()?.subtitle }}
+      </div>
+      <div class="flex items-center gap-3 text-xs font-bold">
+        <span class="bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full">{{ selectedServiceDocs()?.badge }}</span>
+        <span class="text-slate-900 bg-white border border-slate-200 px-2.5 py-1 rounded-full">Costo: <strong>{{
+            selectedServiceDocs()?.cost }}</strong></span>
+      </div>
+    </div>
+
+    <!-- Modal Body (Scrollable) -->
+    <div class="p-6 overflow-y-auto space-y-5">
+
+      <!-- Document List -->
+      <div class="space-y-3">
+        <h3 class="text-xs font-extrabold text-slate-400 uppercase tracking-wider">
+          Lista de Documentos Requeridos
+        </h3>
+
+        <div class="space-y-2.5">
+          @for (doc of selectedServiceDocs()?.documents; track doc.name) {
+          <div
+            class="p-3.5 rounded-xl border border-slate-200/90 bg-white hover:border-[#94b8dc] hover:shadow-xs transition-all flex items-start gap-3.5">
+
+            <!-- Icon by Type -->
+            <div
+              class="w-10 h-10 rounded-xl bg-blue-50 text-[#0f3b75] flex items-center justify-center shrink-0 border border-blue-100 mt-0.5">
+              @if (doc.iconType === 'id-card') {
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <rect x="2" y="5" width="20" height="14" rx="2" stroke-width="2" />
+                <circle cx="8" cy="11" r="2.5" stroke-width="2" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4m-4 4h4" />
+              </svg>
+              } @else if (doc.iconType === 'photo') {
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                <circle cx="12" cy="13" r="3" stroke-width="2" />
+              </svg>
+              } @else if (doc.iconType === 'receipt') {
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 14l2 2 4-4m-3 7H6a2 2 0 01-2-2V5a2 2 0 012-2h12a2 2 0 012 2v8" />
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 19v3m0 0l-2-2m2 2l2-2" />
+              </svg>
+              } @else if (doc.iconType === 'certificate') {
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+              </svg>
+              } @else if (doc.iconType === 'home') {
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+              </svg>
+              } @else {
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+              </svg>
+              }
+            </div>
+
+            <!-- Content -->
+            <div class="flex-1 min-w-0">
+              <div class="flex items-center justify-between gap-2">
+                <h4 class="font-bold text-slate-900 text-sm sm:text-base leading-snug">{{ doc.name }}</h4>
+                @if (doc.tag) {
+                <span class="text-[11px] font-bold px-2 py-0.5 rounded-full shrink-0 {{ doc.tagColor }}">
+                  {{ doc.tag }}
+                </span>
+                }
+              </div>
+              <p class="text-xs sm:text-sm text-slate-600 font-medium mt-0.5 leading-relaxed">{{ doc.description }}</p>
+            </div>
+
+          </div>
+          }
+        </div>
+      </div>
+
+      <!-- Tips / Recommendations Box -->
+      <div class="bg-amber-50/80 border border-amber-200 rounded-xl p-4">
+        <div class="flex items-center gap-2 text-amber-900 font-bold text-xs sm:text-sm mb-2">
+          <svg class="w-4 h-4 text-amber-600 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+              d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+          <span>Recomendaciones Importantes</span>
+        </div>
+        <ul class="space-y-1 text-xs text-amber-950 font-medium list-disc list-inside">
+          @for (tip of selectedServiceDocs()?.tips; track tip) {
+          <li>{{ tip }}</li>
+          }
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Modal Footer -->
+    <div class="bg-slate-50 border-t border-slate-200 px-6 py-3.5 flex items-center justify-end gap-3 shrink-0">
+      <button type="button" (click)="closeDocumentsModal()"
+        class="bg-[#0f3b75] hover:bg-[#0c2f5d] text-white font-bold text-sm px-5 py-2.5 rounded-xl shadow-xs transition-colors cursor-pointer">
+        Entendido / Cerrar
+      </button>
+    </div>
+
+  </div>
+</div>
+}
