@@ -43,7 +43,7 @@ export class App {
     {
       city: 'Madrid',
       country: 'España',
-      phone: '+34 912 345 678',
+      phone: '34 912 345 678',
       address: 'Calle Velázquez, 10, 28001 Madrid, España',
       email: 'consultas@consuladoperumadrid.es'
     },
