@@ -113,336 +113,1146 @@
             <img [src]="selectedLocation().photo" alt="imagennn">
         </div> 
       </article>
-       <article class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow p-6">
-    
-        <!-- Contenedor principal con items-center para centrar todo su contenido vertical -->
-        <div class="col-span-12 sm:col-span-7 flex flex-col justify-center items-center space-y-4">
-            
-            <!-- Título horario -->
-            <h2 class="font-black text-[#0f3b75] text-xl sm:text-2xl leading-tight text-center">
-                Horario de Atencion
-            </h2>
+    <!-- ========================================================= -->
+    <!-- TARJETA: HORARIO DE ATENCIÓN -->
+    <!-- ========================================================= -->
 
-            <!-- dias de atencion -->
-            <ul class="w-full max-w-md space-y-3 text-slate-700 font-medium">
-                <li class="flex items-start space-x-2 border-b border-slate-100 pb-2">
-                    <span class="text-red-600 font-bold">»</span>
-                    <span>De Lunes a Viernes de 08:30-14:00 h (trámites presenciales con cita)</span>
-                </li>
-            </ul>
-          <!--RECOGER DNI -->
-            <h2 class="font-black text-[#0f3b75] text-xl sm:text-2xl leading-tight text-center">
-                Horario de Recoger DNI
-            </h2>
+    <article
+      class="bg-white rounded-2xl shadow-sm border border-slate-200/90
+            overflow-hidden flex flex-col hover:shadow-md transition-shadow">
 
-            <!-- dias de atencion -->
-            <ul class="w-full max-w-md space-y-3 text-slate-700 font-medium">
-                <li class="flex items-start space-x-2 border-b border-slate-100 pb-2">
-                    <span class="text-red-600 font-bold">»</span>
-                    <span>Martes y Jueves de 09:00-13:00 h (Atención sin citas)</span>
-                </li>
-            </ul>
+      <!-- ======================================================= -->
+      <!-- ENCABEZADO -->
+      <!-- ======================================================= -->
+
+      <div class="p-5 sm:p-6 flex-1">
+
+        <!-- TÍTULO -->
+
+        <div
+          class="flex items-center gap-4
+                pb-4 border-b border-slate-200">
+
+          <!-- ICONO RELOJ -->
+
+          <div
+            class="w-12 h-12 sm:w-14 sm:h-14
+                  shrink-0
+                  rounded-full
+                  bg-white
+                  border-2 border-[#0f3b75]
+                  flex items-center justify-center">
+
+            <svg
+              class="w-8 h-8 sm:w-9 sm:h-9
+                    text-[#0f3b75]"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24">
+
+              <circle
+                cx="12"
+                cy="12"
+                r="9" />
+
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M12 7v5l3 2" />
+
+            </svg>
+
+          </div>
+
+
+          <!-- TÍTULO -->
+
+          <h2
+            class="font-black
+                  text-[#0f3b75]
+                  text-xl sm:text-2xl
+                  uppercase
+                  leading-tight">
+
+            Horario de Atención
+
+          </h2>
 
         </div>
+
+
+        <!-- ===================================================== -->
+        <!-- HORARIO 1 -->
+        <!-- ===================================================== -->
+
+        <div
+          class="flex items-center
+                gap-4
+                py-5
+                border-b border-slate-200">
+
+          <!-- ICONO CALENDARIO -->
+
+          <div
+            class="w-16 h-16 sm:w-[68px] sm:h-[68px]
+                  shrink-0
+                  rounded-xl
+                  bg-[#f1f6fc]
+                  flex items-center justify-center">
+
+            <svg
+              class="w-9 h-9 sm:w-10 sm:h-10
+                    text-[#0f3b75]"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24">
+
+              <rect
+                x="4"
+                y="5"
+                width="16"
+                height="15"
+                rx="2" />
+
+              <path
+                stroke-linecap="round"
+                d="M8 3v4M16 3v4M4 9h16" />
+
+              <path
+                stroke-linecap="round"
+                d="M8 13h2M14 13h2
+                  M8 17h2M14 17h2" />
+
+            </svg>
+
+          </div>
+
+
+          <!-- INFORMACIÓN -->
+
+          <div class="flex-1 min-w-0">
+
+            <div
+              class="font-black
+                    text-[#0f3b75]
+                    text-sm sm:text-base">  
+
+              De Lunes a Viernes
+
+            </div>
+
+            <div
+              class="font-semibold
+                    text-[#0f3b75]
+                    text-sm sm:text-base
+                    mt-1">
+
+              de 08:30–14:00 h
+
+            </div>
+
+            <div
+              class="font-semibold
+                    text-[#0f3b75]
+                    text-xs sm:text-sm
+                    mt-1">
+
+              (Trámites presenciales con cita)
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <!-- ===================================================== -->
+        <!-- HORARIO 2 -->
+        <!-- ===================================================== -->
+
+        <div
+          class="flex items-center
+                gap-4
+                py-5">
+
+          <!-- ICONO CALENDARIO -->
+
+          <div
+            class="w-16 h-16 sm:w-[68px] sm:h-[68px]
+                  shrink-0
+                  rounded-xl
+                  bg-[#f1f6fc]
+                  flex items-center justify-center">
+
+            <svg
+              class="w-9 h-9 sm:w-10 sm:h-10
+                    text-[#0f3b75]"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24">
+
+              <rect
+                x="4"
+                y="5"
+                width="16"
+                height="15"
+                rx="2" />
+
+              <path
+                stroke-linecap="round"
+                d="M8 3v4M16 3v4M4 9h16" />
+
+              <path
+                stroke-linecap="round"
+                d="M8 13h2M14 13h2
+                  M8 17h2M14 17h2" />
+
+            </svg>
+
+          </div>
+
+
+          <!-- INFORMACIÓN -->
+
+          <div class="flex-1 min-w-0">
+
+            <div
+              class="font-black
+                    text-[#0f3b75]
+                    text-sm sm:text-base">
+
+              Martes y Jueves
+
+            </div>
+
+            <div
+              class="font-semibold
+                    text-[#0f3b75]
+                    text-sm sm:text-base
+                    mt-1">
+
+              de 07:00–13:00 h
+
+            </div>
+
+            <div
+              class="font-semibold
+                    text-[#0f3b75]
+                    text-xs sm:text-sm
+                    mt-1">
+
+              (Atención sin cita)
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
     </article>
 
-      <!-- ==================== TARJETA 1: APP DNI BIOFACIAL ==================== -->
-      <article
-        class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
-        <div class="grid grid-cols-12 p-6 items-center gap-6 flex-1">
+     
+    <!-- ==================== TARJETA: TRÁMITES DE DNI / SIO ==================== -->
+    <article
+      class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden flex flex-col hover:shadow-md transition-shadow">
 
-          <!-- Columna Izquierda (Ícono y Estado) -->
+      <!-- CONTENIDO -->
+      <div class="p-4 sm:p-5 flex-1">
+
+        <!-- TÍTULO -->
+        <h2 class="font-black text-[#0f3b75] text-xl sm:text-2xl uppercase leading-tight">
+          Trámites de DNI
+        </h2>
+
+        <!-- PLATAFORMA + ESTADO -->
+        <div class="flex items-center gap-3 mt-2 mb-4">
+
+          <span class="font-bold text-[#0f3b75] text-sm">
+            Plataforma:
+          </span>
+
+          <span
+            class="bg-[#16a34a] text-white font-black text-xs px-4 py-1 rounded-lg">
+            SIO
+          </span>
+
+          <span
+            class="inline-flex items-center gap-1 bg-[#16a34a] text-white font-extrabold text-xs px-3 py-1 rounded-full uppercase">
+
+            <svg
+              class="w-3.5 h-3.5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24">
+
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="3"
+                d="M5 13l4 4L19 7" />
+
+            </svg>
+
+            ACTIVO
+
+          </span>
+
+        </div>
+
+
+        <!-- ==================== 8 SERVICIOS ==================== -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+
+          <!-- 1. RECTIFICACIÓN -->
           <div
-            class="col-span-12 sm:col-span-5 flex flex-col items-center justify-center text-center sm:border-r sm:border-slate-100 sm:pr-6">
-            <!-- Smartphone con reconocimiento facial -->
+            class="relative min-h-[125px] sm:min-h-[135px] border border-slate-200 rounded-xl bg-white flex flex-col items-center justify-center text-center p-2 hover:border-[#94b8dc] hover:shadow-sm transition-all">
+
+            <span
+              class="absolute top-2 left-2 w-5 h-5 rounded-md bg-[#c01823] text-white text-[11px] font-black flex items-center justify-center">
+              1
+            </span>
+
+            <!-- ICONO -->
+            <svg
+              class="w-10 h-10 text-[#0f3b75] mb-2"
+              fill="currentColor"
+              viewBox="0 0 24 24">
+
+              <path d="M12 2L2 7v2h20V7L12 2z"/>
+              <path d="M4 10h16v9H4z"/>
+              <path d="M2 21h20v2H2z"/>
+              <path d="M7 12h2v5H7z"/>
+              <path d="M11 12h2v5h-2z"/>
+              <path d="M15 12h2v5h-2z"/>
+
+            </svg>
+
+            <span class="font-extrabold text-[#0f3b75] text-xs leading-tight">
+              Rectificación
+            </span>
+
+            <span class="text-[10px] font-semibold text-slate-600 leading-tight mt-1">
+              (cambio de domicilio,<br>
+              estado civil, etc.)
+            </span>
+
+          </div>
+
+
+          <!-- 2. DNI MAYORES -->
+          <div
+            class="relative min-h-[125px] sm:min-h-[135px] border border-slate-200 rounded-xl bg-white flex flex-col items-center justify-center text-center p-2">
+
+            <span
+              class="absolute top-2 left-2 w-5 h-5 rounded-md bg-[#c01823] text-white text-[11px] font-black flex items-center justify-center">
+              2
+            </span>
+
+            <svg
+              class="w-10 h-10 text-[#0f3b75] mb-2"
+              fill="currentColor"
+              viewBox="0 0 24 24">
+
+              <circle cx="12" cy="7" r="4"/>
+              <path d="M5 21c0-4 3-7 7-7s7 3 7 7H5z"/>
+              <text x="15" y="10" font-size="5" fill="white">17+</text>
+
+            </svg>
+
+            <span class="font-extrabold text-[#0f3b75] text-xs leading-tight">
+              DNI para<br>
+              mayores de edad
+            </span>
+
+            <span class="text-[10px] font-semibold text-slate-600 leading-tight mt-1">
+              (a partir de 17 años)
+            </span>
+
+          </div>
+
+
+          <!-- 3. DNI MENORES -->
+          <div
+            class="relative min-h-[125px] sm:min-h-[135px] border border-slate-200 rounded-xl bg-white flex flex-col items-center justify-center text-center p-2">
+
+            <span
+              class="absolute top-2 left-2 w-5 h-5 rounded-md bg-[#c01823] text-white text-[11px] font-black flex items-center justify-center">
+              3
+            </span>
+
+            <svg
+              class="w-10 h-10 text-[#0f3b75] mb-2"
+              fill="currentColor"
+              viewBox="0 0 24 24">
+
+              <circle cx="12" cy="7" r="3.5"/>
+              <path d="M6 21c0-3.5 2.5-6 6-6s6 2.5 6 6H6z"/>
+
+            </svg>
+
+            <span class="font-extrabold text-[#0f3b75] text-xs leading-tight">
+              DNI para<br>
+              menores de edad
+            </span>
+
+          </div>
+
+
+          <!-- 4. RENOVACIÓN MAYOR -->
+          <div
+            class="relative min-h-[125px] sm:min-h-[135px] border border-slate-200 rounded-xl bg-white flex flex-col items-center justify-center text-center p-2">
+
+            <span
+              class="absolute top-2 left-2 w-5 h-5 rounded-md bg-[#c01823] text-white text-[11px] font-black flex items-center justify-center">
+              4
+            </span>
+
+            <svg
+              class="w-10 h-10 text-[#0f3b75] mb-2"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              viewBox="0 0 24 24">
+
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M20 11a8 8 0 10-2.34 5.66M20 4v7h-7"/>
+
+            </svg>
+
+            <span class="font-extrabold text-[#0f3b75] text-xs leading-tight">
+              Renovación de DNI<br>
+              para mayor de edad
+            </span>
+
+          </div>
+
+
+          <!-- 5. RENOVACIÓN MENOR -->
+          <div
+            class="relative min-h-[125px] sm:min-h-[135px] border border-slate-200 rounded-xl bg-white flex flex-col items-center justify-center text-center p-2">
+
+            <span
+              class="absolute top-2 left-2 w-5 h-5 rounded-md bg-[#c01823] text-white text-[11px] font-black flex items-center justify-center">
+              5
+            </span>
+
+            <svg
+              class="w-10 h-10 text-[#0f3b75] mb-2"
+              fill="currentColor"
+              viewBox="0 0 24 24">
+
+              <circle cx="12" cy="7" r="3.5"/>
+              <path d="M6 21c0-3.5 2.5-6 6-6s6 2.5 6 6H6z"/>
+
+            </svg>
+
+            <span class="font-extrabold text-[#0f3b75] text-xs leading-tight">
+              Renovación de DNI<br>
+              para menor de edad
+            </span>
+
+          </div>
+
+
+          <!-- 6. DUPLICADO -->
+          <div
+            class="relative min-h-[125px] sm:min-h-[135px] border border-slate-200 rounded-xl bg-white flex flex-col items-center justify-center text-center p-2">
+
+            <span
+              class="absolute top-2 left-2 w-5 h-5 rounded-md bg-[#c01823] text-white text-[11px] font-black flex items-center justify-center">
+              6
+            </span>
+
+            <svg
+              class="w-10 h-10 text-[#0f3b75] mb-2"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24">
+
+              <rect x="4" y="5" width="16" height="14" rx="1"/>
+              <circle cx="9" cy="11" r="2"/>
+              <path d="M13 10h4M13 14h4"/>
+
+            </svg>
+
+            <span class="font-extrabold text-[#0f3b75] text-xs leading-tight">
+              Duplicado<br>
+              de DNI
+            </span>
+
+          </div>
+
+
+          <!-- 7. CAMBIO MENOR A MAYOR -->
+          <div
+            class="relative min-h-[125px] sm:min-h-[135px] border border-slate-200 rounded-xl bg-white flex flex-col items-center justify-center text-center p-2">
+
+            <span
+              class="absolute top-2 left-2 w-5 h-5 rounded-md bg-[#c01823] text-white text-[11px] font-black flex items-center justify-center">
+              7
+            </span>
+
+            <svg
+              class="w-10 h-10 text-[#0f3b75] mb-2"
+              fill="currentColor"
+              viewBox="0 0 24 24">
+
+              <circle cx="9" cy="7" r="3"/>
+              <circle cx="17" cy="9" r="2.5"/>
+              <path d="M3 20c0-3.5 2.5-6 6-6s6 2.5 6 6H3z"/>
+              <path d="M15 17h6m-3-3l3 3-3 3"/>
+
+            </svg>
+
+            <span class="font-extrabold text-[#0f3b75] text-xs leading-tight">
+              Cambio de DNI<br>
+              de menor a mayor<br>
+              de edad
+            </span>
+
+          </div>
+
+
+          <!-- 8. CANJE -->
+          <div
+            class="relative min-h-[125px] sm:min-h-[135px] border border-slate-200 rounded-xl bg-white flex flex-col items-center justify-center text-center p-2">
+
+            <span
+              class="absolute top-2 left-2 w-5 h-5 rounded-md bg-[#c01823] text-white text-[11px] font-black flex items-center justify-center">
+              8
+            </span>
+
+            <svg
+              class="w-10 h-10 text-[#0f3b75] mb-2"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.8"
+              viewBox="0 0 24 24">
+
+              <rect x="5" y="4" width="14" height="16" rx="2"/>
+              <path d="M9 8h6M9 12h6"/>
+              <path d="M8 20v2h8v-2"/>
+
+            </svg>
+
+            <span class="font-extrabold text-[#0f3b75] text-xs leading-tight">
+              Canje de Libreta<br>
+              Electoral por DNI
+            </span>
+
+          </div>
+
+        </div>
+
+
+        <!-- ==================== MODALIDAD ==================== -->
+        <div
+          class="mt-3 rounded-xl bg-[#dceafb] px-4 py-2 text-center">
+
+          <div class="flex flex-wrap items-center justify-center gap-2">
+
+            <span class="font-bold text-[#0f3b75] text-xs sm:text-sm">
+              Modalidad:
+            </span>
+
+            <span
+              class="bg-[#489cd3] text-white font-black text-xs px-3 py-1 rounded-full">
+              CAPTURA EN VIVO
+            </span>
+
+          </div>
+
+          <div
+            class="text-[#0f3b75] font-bold text-xs sm:text-sm mt-1">
+
+            🚚 Envío de DNI físico vía DHL – SEMANAL
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- ==================== BOTONES INFERIORES ==================== -->
+      <div class="bg-[#f8fafc] border-t border-slate-200">
+
+        <div class="grid grid-cols-3">
+
+          <!-- REQUISITOS -->
+          <div
+            class="py-2.5 px-2 text-center border-r border-slate-200">
+
+            <div class="text-[9px] sm:text-[10px] font-black text-[#0f3b75] uppercase">
+              Requisitos
+            </div>
+
+            <button
+              type="button"
+              class="mt-1 text-[#0f3b75] font-bold text-[10px] sm:text-xs hover:text-[#c01823]">
+              ▣ Ver detalles
+            </button>
+
+          </div>
+
+
+          <!-- DOCUMENTOS -->
+          <div
+            class="py-2.5 px-2 text-center border-r border-slate-200">
+
+            <div class="text-[9px] sm:text-[10px] font-black text-[#0f3b75] uppercase">
+              Documentos
+            </div>
+
+            <button
+              type="button"
+              (click)="openDocumentsModal('sio')"
+              class="mt-1 text-[#0f3b75] font-bold text-[10px] sm:text-xs hover:text-[#c01823]">
+
+              ▤ Ver documentos
+
+            </button>
+
+          </div>
+
+
+       <!-- SEGUIMIENTO -->
+        <div
+          class="py-2.5 px-2 text-center">
+
+          <div class="text-[9px] sm:text-[10px] font-black text-[#0f3b75] uppercase">
+            Seguimiento
+          </div>
+
+          <a
+            href="https://serviciosportal.reniec.gob.pe/cetdnipi/inicio.htm"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="mt-1 inline-block text-[#0f3b75] font-bold text-[10px] sm:text-xs hover:text-[#c01823]">
+
+            ◉ Ver estado
+
+          </a>
+
+        </div>
+
+        </div>
+
+      </div>
+
+    </article>
+      <!-- ========================================================= -->
+      <!-- TARJETA: TRÁMITES EN LÍNEA / APP DNI BIOFACIAL -->
+      <!-- ========================================================= -->
+
+      <article
+        class="bg-white rounded-2xl shadow-sm border border-slate-200/90
+              overflow-hidden flex flex-col hover:shadow-md transition-shadow">
+
+        <!-- ======================================================= -->
+        <!-- CONTENIDO PRINCIPAL -->
+        <!-- ======================================================= -->
+
+        <div class="p-4 sm:p-5 flex-1">
+
+          <!-- ===================================================== -->
+          <!-- TÍTULO -->
+          <!-- ===================================================== -->
+
+          <h2
+            class="font-black text-[#0f3b75] text-xl sm:text-2xl
+                  uppercase leading-tight">
+
+            Trámites en Línea
+
+          </h2>
+
+
+          <!-- ===================================================== -->
+          <!-- PLATAFORMA + ESTADO -->
+          <!-- ===================================================== -->
+
+          <div
+            class="flex flex-wrap items-center gap-3 mt-2 mb-5">
+
+            <span
+              class="font-bold text-[#0f3b75] text-sm">
+
+              Plataforma:
+
+            </span>
+
+
+            <!-- Plataforma -->
+            <span
+              class="bg-[#dceafb] text-[#0f3b75]
+                    font-black text-xs sm:text-sm
+                    px-4 py-1.5 rounded-lg">
+
+              App DNI Biofacial
+
+            </span>
+
+
+            <!-- Estado -->
+            <span
+              class="inline-flex items-center gap-1.5
+                    bg-[#16a34a] text-white
+                    font-extrabold text-xs
+                    px-3 py-1.5 rounded-full
+                    uppercase">
+
+              <svg
+                class="w-3.5 h-3.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24">
+
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                  d="M5 13l4 4L19 7" />
+
+              </svg>
+
+              ACTIVO
+
+            </span>
+
+          </div>
+
+
+          <!-- ===================================================== -->
+          <!-- SERVICIOS DE APP DNI BIOFACIAL -->
+          <!-- ===================================================== -->
+
+          <div class="space-y-3">
+
+
+            <!-- =================================================== -->
+            <!-- SERVICIO 1 -->
+            <!-- =================================================== -->
+
             <div
-              class="relative w-20 h-28 border-[3.5px] border-[#0f3b75] rounded-2xl flex flex-col items-center justify-between p-1.5 bg-slate-50 shadow-inner">
-              <!-- Altavoz superior -->
-              <div class="w-5 h-1 bg-[#0f3b75] rounded-full"></div>
+              class="group border border-slate-200
+                    rounded-xl bg-white
+                    min-h-[82px]
+                    flex items-center
+                    px-3 sm:px-4
+                    hover:border-[#94b8dc]
+                    hover:shadow-sm
+                    transition-all">
 
-              <!-- Marco de escaneo facial y rostro -->
-              <div class="relative w-12 h-14 flex items-center justify-center">
-                <!-- Esquinas de escaneo -->
-                <div class="absolute inset-0 border border-blue-400 rounded-sm"></div>
-                <div class="absolute -top-0.5 -left-0.5 w-2.5 h-2.5 border-t-2 border-l-2 border-[#0f3b75]"></div>
-                <div class="absolute -top-0.5 -right-0.5 w-2.5 h-2.5 border-t-2 border-r-2 border-[#0f3b75]"></div>
-                <div class="absolute -bottom-0.5 -left-0.5 w-2.5 h-2.5 border-b-2 border-l-2 border-[#0f3b75]"></div>
-                <div class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 border-b-2 border-r-2 border-[#0f3b75]"></div>
+              <!-- ICONO -->
 
-                <!-- Avatar de rostro -->
-                <svg class="w-9 h-9 text-[#0f3b75]" fill="currentColor" viewBox="0 0 24 24">
+              <div
+                class="w-14 h-14 sm:w-16 sm:h-16
+                      shrink-0
+                      rounded-xl
+                      bg-[#f1f6fc]
+                      flex items-center justify-center
+                      mr-4">
+
+                <svg
+                  class="w-8 h-8 sm:w-9 sm:h-9 text-[#0f3b75]"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  viewBox="0 0 24 24">
+
+                  <!-- Calendario -->
+
+                  <rect
+                    x="4"
+                    y="5"
+                    width="16"
+                    height="15"
+                    rx="2" />
+
                   <path
-                    d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
+                    stroke-linecap="round"
+                    d="M8 3v4M16 3v4M4 9h16" />
+
+                  <path
+                    stroke-linecap="round"
+                    d="M8 13h2M14 13h2M8 17h2M14 17h2" />
+
                 </svg>
+
               </div>
 
-              <!-- Botón inferior del móvil -->
-              <div class="w-3 h-3 rounded-full border-2 border-[#0f3b75]"></div>
+
+              <!-- TEXTO -->
+
+              <div class="flex-1 min-w-0">
+
+                <div
+                  class="font-extrabold
+                        text-[#0f3b75]
+                        text-sm sm:text-base
+                        leading-tight">
+
+                  Renovación por caducidad del DNIe
+
+                </div>
+
+              </div>
+
+
+              <!-- FLECHA -->
+
+              <div
+                class="shrink-0 ml-3">
+
+                <svg
+                  class="w-6 h-6 text-[#c01823]
+                        group-hover:translate-x-1
+                        transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  viewBox="0 0 24 24">
+
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 5l7 7-7 7" />
+
+                </svg>
+
+              </div>
+
             </div>
 
-            <!-- Título del servicio -->
-            <h2 class="font-black text-[#0f3b75] text-xl sm:text-2xl leading-tight mt-3">
-              App DNI<br />Biofacial
-            </h2>
 
-            <!-- Badge ACTIVO -->
+
+            <!-- =================================================== -->
+            <!-- SERVICIO 2 -->
+            <!-- =================================================== -->
+
             <div
-              class="mt-3 inline-flex items-center gap-1.5 bg-[#16a34a] text-white text-xs sm:text-sm font-extrabold px-4 py-1 rounded-full uppercase tracking-wider shadow-xs">
-              <svg class="w-4 h-4 stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-              ACTIVO
+              class="group border border-slate-200
+                    rounded-xl bg-white
+                    min-h-[82px]
+                    flex items-center
+                    px-3 sm:px-4
+                    hover:border-[#94b8dc]
+                    hover:shadow-sm
+                    transition-all">
+
+              <!-- ICONO -->
+
+              <div
+                class="w-14 h-14 sm:w-16 sm:h-16
+                      shrink-0
+                      rounded-xl
+                      bg-[#f1f6fc]
+                      flex items-center justify-center
+                      mr-4">
+
+                <svg
+                  class="w-8 h-8 sm:w-9 sm:h-9 text-[#0f3b75]"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                  viewBox="0 0 24 24">
+
+                  <!-- DNI -->
+
+                  <rect
+                    x="3"
+                    y="5"
+                    width="18"
+                    height="14"
+                    rx="2" />
+
+                  <circle
+                    cx="8"
+                    cy="11"
+                    r="2" />
+
+                  <path
+                    stroke-linecap="round"
+                    d="M12 10h5M12 14h5M6 16h5" />
+
+                </svg>
+
+              </div>
+
+
+              <!-- TEXTO -->
+
+              <div class="flex-1 min-w-0">
+
+                <div
+                  class="font-extrabold
+                        text-[#0f3b75]
+                        text-sm sm:text-base
+                        leading-tight">
+
+                  Duplicado de DNIe
+
+                </div>
+
+              </div>
+
+
+              <!-- FLECHA -->
+
+              <div
+                class="shrink-0 ml-3">
+
+                <svg
+                  class="w-6 h-6 text-[#c01823]
+                        group-hover:translate-x-1
+                        transition-transform"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.5"
+                  viewBox="0 0 24 24">
+
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 5l7 7-7 7" />
+
+                </svg>
+
+              </div>
+
             </div>
-          </div>
-
-          <!-- Columna Derecha (Lista de Trámites) -->
-          <div class="col-span-12 sm:col-span-7 flex flex-col justify-center space-y-2 sm:pl-2">
-            <div
-              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
-              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>Renovación por caducidad del DNIe</span>
-            </div>
-            <div
-              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
-              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>Duplicado de DNIe</span>
-            </div>
-            
-            
-          </div>
-        </div>
-
-        <!-- ==================== TABLA INFERIOR DE METADATOS ==================== -->
-        <div class="bg-[#f8fafc] border-t border-slate-200">
-          <table class="w-full border-collapse table-fixed text-center">
-            <thead>
-              <tr
-                class="border-b border-slate-200 text-slate-900 text-xs sm:text-sm font-extrabold uppercase tracking-wider bg-slate-100/70">
-                <th class="py-2.5 px-2 border-r border-slate-200 font-extrabold">Requerimientos</th>
-                <th class="py-2.5 px-2 border-r border-slate-200 font-extrabold">Documentos</th>
-                <th class="py-2.5 px-2 font-extrabold">Seguimiento de tramite</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="text-xs sm:text-sm text-slate-700 font-semibold">
-                <td class="py-3 px-2 border-r border-slate-200 align-middle">
-                  1. App DNI y de DNI
-                </td>
-                <td class="py-3 px-2 border-r border-slate-200 align-middle">
-                  <button type="button" (click)="openDocumentsModal('biofacial')"
-                    class="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 hover:bg-[#c01823] text-[#c01823] hover:text-white border border-red-200 font-bold text-xs sm:text-sm shadow-xs transition-all cursor-pointer group"
-                    title="Ver lista completa de requisitos y documentos">
-                    <svg class="w-4 h-4 text-[#c01823] group-hover:text-white shrink-0 transition-colors"
-                      fill="currentColor" viewBox="0 0 24 24">
-                      <path
-                        d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
-                    </svg>
-                    <span>Ver documentos</span>
-                  </button>
-                </td>
-                  <td class="py-3 px-2 align-middle">
-                  <div class="flex items-center justify-center gap-1.5 font-black text-slate-900 text-sm sm:text-base">
-                                        
-                      <a href="https://serviciosportal.reniec.gob.pe/cetdnipi/inicio.htm" class="inline-flex items-center justify-center w-full max-w-xs px-4 py-2 text-sm font-bold text-white bg-[#c01823] rounded-lg hover:bg-red-700 transition-colors shadow-sm">
-                        Clic Aqui
-                      </a>
-                    
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </article>
-
-      <!-- ==================== TARJETA 2: SIO ==================== -->
-      <article
-        class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
-        <div class="grid grid-cols-12 p-6 items-start gap-6 flex-1">
-
-          <!-- Columna Izquierda (Logo SIO y Estado) -->
+          <!-- ==================== AVISO ==================== -->
           <div
-            class="col-span-12 sm:col-span-5 flex flex-col items-start justify-start text-center sm:border-r sm:border-slate-100 sm:pr-6 ">
-            <div class="font-black text-[#0f3b75] text-5xl sm:text-6xl tracking-tight leading-none">
-              SIO
-            </div>
-            <h2 class="font-bold text-[#0f3b75] text-sm sm:text-base leading-tight mt-2 uppercase">
-              Trámites de<br />DNI
-            </h2>
+            class="mt-4 rounded-xl bg-[#DB374F] px-4 py-2 text-center">
 
-            <!-- Badge ACTIVO -->
-            <div
-              class="mt-3 inline-flex items-center gap-1.5 bg-[#16a34a] text-white text-xs sm:text-sm font-extrabold px-4 py-1 rounded-full uppercase tracking-wider shadow-xs ">
-              <svg class="w-4 h-4 stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-              ACTIVO
-            </div>
-          </div>
+            <div class="flex flex-wrap items-center justify-center gap-2 ">
 
-          <!-- Columna Derecha (Lista + Banner Modalidad) -->
-          <div class="col-span-12 sm:col-span-12 flex flex-col justify-between space-y-2 sm:pl-2">
-            <div
-              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-m">
-              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>Rectificación (cambio de domicilio, estado civil, etc.) </span>
-            </div>
-            <div
-              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-m">
-              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>DNI para mayores de edad (a partir de 17 años)</span>
-            </div>
-            <div
-              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-m">
-              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>DNI para menores de edad</span>
-            </div>
-            <div
-              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-m">
-              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>Renovación de DNI para mayor y menor de edad</span>
-            </div>
-             <div
-              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-m">
-              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>Duplicado de DNI</span>
-            </div>
-             <div
-              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-m">
-              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>Cambio de DNI de menor a mayor de edad</span>
-            </div>
-             <div
-              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-m">
-              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>Canje de Libreta Electoral por DNI</span>
-            </div>
+              <span class="font-bold text-white text-xs sm:text-sm">
+                IMPORTANTE 
+              </span>
 
-            <!-- Banner Celeste de Modalidad y DHL con dos tonos -->
-            <div class="overflow-hidden rounded-xl border border-[#7cc4ea] shadow-xs mt-1">
-              <!-- Parte superior más oscura -->
-              <div class="bg-[#489cd3] text-white text-xs sm:text-sm font-bold text-center py-1.5 px-3">
-                Modalidad: <span class="font-black uppercase tracking-wide">CAPTURA EN VIVO</span>
               </div>
-              <!-- Parte inferior más clara -->
-              <div class="bg-[#dcf0fb] text-[#0f3b75] text-xs sm:text-sm font-bold text-center py-1.5 px-3">
-                Envío de DNI físico vía: <span class="font-extrabold">DHL - SEMANAL</span>
-              </div>
+
+            <div
+              class="text-white font text-xs sm:text-sm mt-1">
+
+              Si usted tramitó su DNI a través de la aplicación DNI biofacial web RENIEC, deberá acercarse al consulado personalmente para recoger su DNI. Debido a que el trámite requiere la toma de huellas para realizar la entrega. No se aceptarán entregas a terceros con cartas poderes o autorizaciones.
+
             </div>
+
           </div>
         </div>
 
-        <!-- ==================== TABLA INFERIOR DE METADATOS ==================== -->
-        <div class="bg-[#f8fafc] border-t border-slate-200">
-          <table class="w-full border-collapse table-fixed text-center">
-            <thead>
-              <tr
-                class="border-b border-slate-200 text-slate-900 text-xs sm:text-sm font-extrabold uppercase tracking-wider bg-slate-100/70">
-                <th class="py-2.5 px-2 border-r border-slate-200 font-extrabold">Requerimientos</th>
-                <th class="py-2.5 px-2 font-extrabold">Documentos</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr class="text-xs sm:text-sm text-slate-700 font-semibold">
-                <td class="py-3 px-2 border-r border-slate-200 align-middle">
-                  1. Inscripción por DNI
-                </td>
-                <td class="py-3 px-2 border-r border-slate-200 align-middle">
-                  <button type="button" (click)="openDocumentsModal('sio')"
-                    class="inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg bg-red-50 hover:bg-[#c01823] text-[#c01823] hover:text-white border border-red-200 font-bold text-xs sm:text-sm shadow-xs transition-all cursor-pointer group"
-                    title="Ver lista completa de requisitos y documentos">
-                    <svg class="w-4 h-4 text-[#c01823] group-hover:text-white shrink-0 transition-colors"
-                      fill="currentColor" viewBox="0 0 24 24">
-                      <path
-                        d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm2 16H8v-2h8v2zm0-4H8v-2h8v2zm-3-5V3.5L18.5 9H13z" />
-                    </svg>
-                    <span>Ver documentos</span>
-                  </button>
-                </td>
-                
-             </tr>
-            </tbody>
-          </table>
-        </div>
-      </article>
+      </div>
 
-      <!-- ==================== TARJETA 3: 3. REGISTRO CIVIL CONSULAR ==================== -->
-      <article
-        class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden flex flex-col hover:shadow-md transition-shadow">
-        <!-- Header Azul Marino -->
-        <header class="bg-[#0f3b75] text-white font-extrabold text-lg sm:text-xl px-6 py-3 tracking-wide uppercase">
-          3. REGISTRO CIVIL CONSULAR
-        </header>
 
-        <div class="grid grid-cols-12 p-6 items-center gap-6 flex-1">
-          <!-- Columna Izquierda (Ícono Columns SIRCM y Estado) -->
+        <!-- ======================================================= -->
+        <!-- PARTE INFERIOR -->
+        <!-- ======================================================= -->
+
+        <div
+          class="bg-[#f8fafc]
+                border-t border-slate-200">
+
           <div
-            class="col-span-12 sm:col-span-5 flex flex-col items-center justify-center text-center sm:border-r sm:border-slate-100 sm:pr-6">
-            <!-- Icono clásico de Edificio Institucional / 4 Columnas -->
-            <div class="text-[#0f3b75] flex flex-col items-center">
-              <svg class="w-24 h-20" fill="currentColor" viewBox="0 0 64 48">
-                <!-- Techo / Frontón -->
-                <polygon points="32,2 4,14 60,14" />
-                <!-- Cornisa superior -->
-                <rect x="6" y="15" width="52" height="3" rx="1" />
-                <!-- 4 Columnas -->
-                <rect x="10" y="20" width="7" height="18" rx="1" />
-                <rect x="22" y="20" width="7" height="18" rx="1" />
-                <rect x="35" y="20" width="7" height="18" rx="1" />
-                <rect x="47" y="20" width="7" height="18" rx="1" />
-                <!-- Base escalonada -->
-                <rect x="6" y="40" width="52" height="3" rx="1" />
-                <rect x="2" y="44" width="60" height="4" rx="1" />
-              </svg>
-            </div>
+            class="grid grid-cols-3">
 
-            <!-- Título SIRCM -->
-            <h2 class="font-black text-[#0f3b75] text-2xl sm:text-3xl tracking-wider mt-1.5">
-              SIRCM
-            </h2>
 
-            <!-- Badge EN LÍNEA -->
+            <!-- =================================================== -->
+            <!-- REQUISITOS -->
+            <!-- =================================================== -->
+
             <div
-              class="mt-3 inline-flex items-center gap-1.5 bg-[#16a34a] text-white text-xs sm:text-sm font-extrabold px-4 py-1 rounded-full uppercase tracking-wider shadow-xs">
-              <svg class="w-4 h-4 stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
-              </svg>
-              EN LÍNEA
+              class="py-3 px-2
+                    text-center
+                    border-r border-slate-200">
+
+              <div
+                class="text-[9px] sm:text-[10px]
+                      font-black
+                      text-[#0f3b75]
+                      uppercase">
+
+                Requisitos
+
+              </div>
+
+
+              <button
+                type="button"
+                class="mt-1.5
+                      inline-flex items-center
+                      gap-1
+                      text-[#0f3b75]
+                      font-bold
+                      text-[10px] sm:text-xs
+                      hover:text-[#c01823]
+                      transition-colors">
+
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24">
+
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M9 5h6M9 9h6M9 13h4M5 3h14v18H5z" />
+
+                </svg>
+
+                Ver detalles
+
+              </button>
+
             </div>
+
+
+            <!-- =================================================== -->
+            <!-- DOCUMENTOS -->
+            <!-- =================================================== -->
+
+            <div
+              class="py-3 px-2
+                    text-center
+                    border-r border-slate-200">
+
+              <div
+                class="text-[9px] sm:text-[10px]
+                      font-black
+                      text-[#0f3b75]
+                      uppercase">
+
+                Documentos
+
+              </div>
+
+
+              <button
+                type="button"
+                (click)="openDocumentsModal('biofacial')"
+                class="mt-1.5
+                      inline-flex items-center
+                      gap-1
+                      text-[#0f3b75]
+                      font-bold
+                      text-[10px] sm:text-xs
+                      hover:text-[#c01823]
+                      transition-colors">
+
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24">
+
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M6 3h9l4 4v14H6z" />
+
+                  <path
+                    stroke-linecap="round"
+                    d="M9 13h6M9 17h6" />
+
+                </svg>
+
+                Ver documentos
+
+              </button>
+
+            </div>
+
+
+            <!-- =================================================== -->
+            <!-- SEGUIMIENTO -->
+            <!-- =================================================== -->
+
+            <div
+              class="py-3 px-2
+                    text-center">
+
+              <div
+                class="text-[9px] sm:text-[10px]
+                      font-black
+                      text-[#0f3b75]
+                      uppercase">
+
+                Seguimiento de trámite
+
+              </div>
+
+
+              <button
+                type="button"
+                class="mt-1.5
+                      inline-flex items-center
+                      justify-center
+                      gap-1
+                      bg-[#c01823]
+                      hover:bg-[#a9151f]
+                      text-white
+                      font-black
+                      text-[10px] sm:text-xs
+                      px-4 py-2
+                      rounded-lg
+                      transition-colors">
+
+                <svg
+                  class="w-4 h-4"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24">
+
+                  <circle
+                    cx="11"
+                    cy="11"
+                    r="7" />
+
+                  <path
+                    stroke-linecap="round"
+                    d="M20 20l-4-4" />
+
+                </svg>
+                <a
+                  href="https://serviciosportal.reniec.gob.pe/cetdnipi/inicio.htm"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="mt-1 inline-block text-white font-bold text-[10px] sm:text-xs hover:text-[#c01823]">
+                  Ver estado
+
+                </a>
+
+                  
+              </button>
+
+            </div>
+
           </div>
 
-          <!-- Columna Derecha (Lista + Banner Verde) -->
-          <div class="col-span-12 sm:col-span-7 flex flex-col justify-between space-y-2 sm:pl-2">
-            <div
-              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
-              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>Inscripción de Nacimiento</span>
-            </div>
-            <div
-              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
-              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>Registro de Matrimonio</span>
-            </div>
-            <div
-              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
-              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>Registro de Defunción</span>
-            </div>
-
-            <!-- Banner Verde de Actas -->
-            <div
-              class="bg-[#16a34a] text-white rounded-xl p-3 text-center text-xs sm:text-sm font-bold leading-tight shadow-xs mt-1">
-              Actas interconectadas en tiempo real con RENIEC Perú.
-            </div>
-          </div>
         </div>
+
       </article>
 
+       <!-- CIUDADANO DIGITAL -->
       <article
         class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden flex flex-col hover:shadow-md transition-shadow">
         <!-- Header Rojo Carmesí -->
         <header class="bg-[#c01823] text-white font-extrabold text-lg sm:text-xl px-6 py-3 tracking-wide uppercase">
-          4. CIUDADANO DIGITAL
+           CIUDADANO DIGITAL
         </header>
 
         <div class="grid grid-cols-12 p-6 items-center gap-6 flex-1">
@@ -556,6 +1366,78 @@
           </div>
         </div>
       </article>
+      <!-- ==================== TARJETA 3: 3. REGISTRO CIVIL CONSULAR ==================== -->
+      <article
+        class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden flex flex-col hover:shadow-md transition-shadow">
+        <!-- Header Azul Marino -->
+        <header class="bg-[#0f3b75] text-white font-extrabold text-lg sm:text-xl px-6 py-3 tracking-wide uppercase">
+          REGISTRO CIVIL CONSULAR
+        </header>
+
+        <div class="grid grid-cols-12 p-6 items-center gap-6 flex-1">
+          <!-- Columna Izquierda (Ícono Columns SIRCM y Estado) -->
+          <div
+            class="col-span-12 sm:col-span-5 flex flex-col items-center justify-center text-center sm:border-r sm:border-slate-100 sm:pr-6">
+            <!-- Icono clásico de Edificio Institucional / 4 Columnas -->
+            <div class="text-[#0f3b75] flex flex-col items-center">
+              <svg class="w-24 h-20" fill="currentColor" viewBox="0 0 64 48">
+                <!-- Techo / Frontón -->
+                <polygon points="32,2 4,14 60,14" />
+                <!-- Cornisa superior -->
+                <rect x="6" y="15" width="52" height="3" rx="1" />
+                <!-- 4 Columnas -->
+                <rect x="10" y="20" width="7" height="18" rx="1" />
+                <rect x="22" y="20" width="7" height="18" rx="1" />
+                <rect x="35" y="20" width="7" height="18" rx="1" />
+                <rect x="47" y="20" width="7" height="18" rx="1" />
+                <!-- Base escalonada -->
+                <rect x="6" y="40" width="52" height="3" rx="1" />
+                <rect x="2" y="44" width="60" height="4" rx="1" />
+              </svg>
+            </div>
+
+            <!-- Título SIRCM -->
+            <h2 class="font-black text-[#0f3b75] text-2xl sm:text-3xl tracking-wider mt-1.5">
+              SIRCM
+            </h2>
+
+            <!-- Badge EN LÍNEA -->
+            <div
+              class="mt-3 inline-flex items-center gap-1.5 bg-[#16a34a] text-white text-xs sm:text-sm font-extrabold px-4 py-1 rounded-full uppercase tracking-wider shadow-xs">
+              <svg class="w-4 h-4 stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+              </svg>
+              EN LÍNEA
+            </div>
+          </div>
+
+          <!-- Columna Derecha (Lista + Banner Verde) -->
+          <div class="col-span-12 sm:col-span-7 flex flex-col justify-between space-y-2 sm:pl-2">
+            <div
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
+              <span>Inscripción de Nacimiento</span>
+            </div>
+            <div
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
+              <span>Registro de Matrimonio</span>
+            </div>
+            <div
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
+              <span>Registro de Defunción</span>
+            </div>
+
+            <!-- Banner Verde de Actas -->
+            <div
+              class="bg-[#16a34a] text-white rounded-xl p-3 text-center text-xs sm:text-sm font-bold leading-tight shadow-xs mt-1">
+              Actas interconectadas en tiempo real con RENIEC Perú.
+            </div>
+          </div>
+        </div>
+      </article>
+
 
    
 
