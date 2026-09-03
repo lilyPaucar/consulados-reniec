@@ -26,6 +26,7 @@ interface LocationOption {
   phone: string;
   address: string;
   email: string;
+  photo: string;
 }
 
 @Component({
@@ -45,56 +46,65 @@ export class App {
       country: 'España',
       phone: '+34-91-5629022 Ó +34-91-5629012 , SOLO EMERGENCIA: +34-669701608',
       address: '28008, P.º del Pintor Rosales, 30, 28008 Madrid, España',
-      email: 'info@consuladoperumadrid.org'
+      email: 'info@consuladoperumadrid.org',
+      photo: 'MADRID.jpg'
+      
     },
     {
       city: 'Barcelona',
       country: 'España',
       phone: '+34 932 154 321',
       address: 'Passeig de Gràcia, 45, 08007 Barcelona, España',
-      email: 'informes@consuladoperubarcelona.es'
+      email: 'informes@consuladoperubarcelona.es',
+      photo: 'MADRID.jpg'
     },
     {
       city: 'Valencia',
       country: 'España',
       phone: '+34 963 852 741',
       address: 'Plaza del Ayuntamiento, 12, 46002 Valencia, España',
-      email: 'valencia@consuladoperu.es'
+      email: 'valencia@consuladoperu.es',
+      photo: 'MADRID.jpg'
     },
     {
       city: 'París',
       country: 'Francia',
       phone: '+33 1 42 61 58 00',
       address: '50 Avenue Kléber, 75116 Paris, France',
-      email: 'consulat.perou@paris.fr'
+      email: 'consulat.perou@paris.fr',
+      photo: 'MADRID.jpg'
     },
     {
       city: 'Milán',
       country: 'Italia',
       phone: '+39 02 7600 6093',
       address: 'Via Pantano, 13, 20122 Milano, Italia',
-      email: 'informes@consuladoperumilan.it'
+      email: 'informes@consuladoperumilan.it',
+      photo: 'MADRID.jpg'
     },
     {
       city: 'Buenos Aires',
       country: 'Argentina',
       phone: '+54 11 4802 2000',
       address: 'San Martín 128, C1004 AAD Buenos Aires, Argentina',
-      email: 'consultas@consuladoperubaires.org'
+      email: 'consultas@consuladoperubaires.org',
+      photo: 'MADRID.jpg'
     },
     {
       city: 'Santiago',
       country: 'Chile',
       phone: '+56 2 2362 9300',
       address: 'Av. Andrés Bello 1751, Providencia, Santiago, Chile',
-      email: 'contacto@consuladoperuchile.cl'
+      email: 'contacto@consuladoperuchile.cl',
+      photo: 'MADRID.jpg'
     },
     {
       city: 'Miami',
       country: 'Estados Unidos',
       phone: '+1 305 373 8520',
       address: '2801 Ponce de Leon Blvd, Coral Gables, FL 33134, EE.UU.',
-      email: 'info@consuladoperumiami.gov'
+      email: 'info@consuladoperumiami.gov',
+      photo: 'MADRID.jpg'
     }
   ];
 

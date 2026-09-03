@@ -110,7 +110,7 @@
       <article
         class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
         <div>
-            <img src="MADRID.jpg" alt="">
+            <img [src]="selectedLocation().photo" alt="imagennn">
         </div> 
       </article>
        <article class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow p-6">
@@ -258,21 +258,21 @@
       <!-- ==================== TARJETA 2: SIO ==================== -->
       <article
         class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden flex flex-col justify-between hover:shadow-md transition-shadow">
-        <div class="grid grid-cols-12 p-6 items-center gap-6 flex-1">
+        <div class="grid grid-cols-12 p-6 items-start gap-6 flex-1">
 
           <!-- Columna Izquierda (Logo SIO y Estado) -->
           <div
-            class="col-span-12 sm:col-span-5 flex flex-col items-center justify-center text-center sm:border-r sm:border-slate-100 sm:pr-6">
+            class="col-span-12 sm:col-span-5 flex flex-col items-start justify-start text-center sm:border-r sm:border-slate-100 sm:pr-6 ">
             <div class="font-black text-[#0f3b75] text-5xl sm:text-6xl tracking-tight leading-none">
               SIO
             </div>
             <h2 class="font-bold text-[#0f3b75] text-sm sm:text-base leading-tight mt-2 uppercase">
-              Sistema Integrado<br />Operativo
+              Trámites de<br />DNI
             </h2>
 
             <!-- Badge ACTIVO -->
             <div
-              class="mt-3 inline-flex items-center gap-1.5 bg-[#16a34a] text-white text-xs sm:text-sm font-extrabold px-4 py-1 rounded-full uppercase tracking-wider shadow-xs">
+              class="mt-3 inline-flex items-center gap-1.5 bg-[#16a34a] text-white text-xs sm:text-sm font-extrabold px-4 py-1 rounded-full uppercase tracking-wider shadow-xs ">
               <svg class="w-4 h-4 stroke-[3]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
               </svg>
@@ -281,31 +281,41 @@
           </div>
 
           <!-- Columna Derecha (Lista + Banner Modalidad) -->
-          <div class="col-span-12 sm:col-span-7 flex flex-col justify-between space-y-2 sm:pl-2">
+          <div class="col-span-12 sm:col-span-12 flex flex-col justify-between space-y-2 sm:pl-2">
             <div
-              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-m">
               <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>Inscripción por primera vez</span>
+              <span>Rectificación (cambio de domicilio, estado civil, etc.) </span>
             </div>
             <div
-              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-m">
               <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>Canje de Libreta Electoral</span>
+              <span>DNI para mayores de edad (a partir de 17 años)</span>
             </div>
             <div
-              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-m">
               <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>Recojo de DNI</span>
+              <span>DNI para menores de edad</span>
             </div>
             <div
-              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-m">
               <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>Rectificación de datos</span>
+              <span>Renovación de DNI para mayor y menor de edad</span>
             </div>
              <div
-              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-m">
               <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>Rectificación de imagenes y datos</span>
+              <span>Duplicado de DNI</span>
+            </div>
+             <div
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-m">
+              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
+              <span>Cambio de DNI de menor a mayor de edad</span>
+            </div>
+             <div
+              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-m">
+              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
+              <span>Canje de Libreta Electoral por DNI</span>
             </div>
 
             <!-- Banner Celeste de Modalidad y DHL con dos tonos -->
@@ -547,124 +557,7 @@
         </div>
       </article>
 
-      <article
-        class="bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden flex flex-col hover:shadow-md transition-shadow">
-        <!-- Header Rojo Carmesí -->
-        <header class="bg-[#c01823] text-white font-extrabold text-lg sm:text-xl px-6 py-3 tracking-wide uppercase">
-          5. CIUDADANO DIGITAL
-        </header>
-
-        <div class="grid grid-cols-12 p-6 items-center gap-6 flex-1">
-          <!-- Columna Izquierda (Logo / Imagen Ciudadano Digital y Título) -->
-          <div
-            class="col-span-12 sm:col-span-5 flex flex-col items-center justify-center text-center sm:border-r sm:border-slate-100 sm:pr-6">
-            <!-- Imagen Ciudadano Digital Sin Fondo y Ajustada al Tamaño de los demás íconos -->
-            <div class="relative flex items-center justify-center min-h-[90px] sm:min-h-[105px]">
-              <img src="ciudadano.png" alt="Ciudadano Digital"
-                class="w-24 h-24 sm:w-30 sm:h-30 object-contain drop-shadow-md hover:scale-105 transition-transform duration-200" />
-            </div>
-
-            <!-- Título Trámites Digital -->
-            <h2 class="font-black text-[#0f3b75] text-2xl leading-tight mt-1.5">
-              Trámites
-            </h2>
-            <div
-              class="bg-[#c01823] text-white font-extrabold text-lg sm:text-xl px-5 py-0.5 rounded-lg mt-1 shadow-xs tracking-wide">
-              Digital
-            </div>
-          </div>
-
-          <!-- Columna Derecha (Lista + Estadística Mensual) -->
-          <div class="col-span-12 sm:col-span-7 flex flex-col justify-between space-y-2 sm:pl-2">
-            <div
-              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
-              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>Verificar, Descargar y Renovar tus certificados digitales</span>
-            </div>
-            <div
-              class="border-b-[1.5px] border-[#94b8dc] pb-2 flex items-center font-bold text-slate-800 text-base sm:text-lg">
-              <span class="text-[#c01823] font-black text-xl mr-2.5 leading-none">»</span>
-              <span>Actualizar el código PIN de seguridad</span>
-            </div>
-
-
-            <!-- Banner de Requisitos Técnicos -->
-            <div class="overflow-hidden rounded-xl mt-2 border border-slate-200 shadow-xs bg-slate-50/80">
-              <div
-                class="bg-[#0f3b75] text-white text-xs sm:text-sm font-black px-3.5 py-1.5 flex items-center justify-between">
-                <div class="flex items-center gap-1.5">
-                  <svg class="w-4 h-4 text-blue-200 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-                  </svg>
-                  <span class="uppercase tracking-wide">Requisitos:</span>
-                </div>
-                <span
-                  class="text-[10px] bg-white/20 text-white font-bold px-2 py-0.5 rounded-full uppercase tracking-wider">Acceso
-                  Digital</span>
-              </div>
-              <div class="p-2.5 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs">
-
-                <!-- 1. DNIe V2.0 - V3.0 -->
-                <div
-                  class="flex items-center gap-2 bg-white p-2 rounded-lg border border-slate-200/90 shadow-xs hover:border-[#94b8dc] transition-colors">
-                  <div
-                    class="w-7 h-7 rounded-md bg-blue-50 text-[#0f3b75] flex items-center justify-center shrink-0 border border-blue-100">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <rect x="2" y="5" width="20" height="14" rx="2" stroke-width="2" />
-                      <circle cx="8" cy="12" r="2" stroke-width="2" />
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 10h4m-4 4h4" />
-                    </svg>
-                  </div>
-                  <span class="font-bold text-slate-800 text-[11px] sm:text-xs leading-tight">DNIe V2.0 - V3.0</span>
-                </div>
-
-                <!-- 2. Lector SmartCard -->
-                <div
-                  class="flex items-center gap-2 bg-white p-2 rounded-lg border border-slate-200/90 shadow-xs hover:border-[#94b8dc] transition-colors">
-                  <div
-                    class="w-7 h-7 rounded-md bg-red-50 text-[#c01823] flex items-center justify-center shrink-0 border border-red-100">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M4 7v10c0 1.1.9 2 2 2h12a2 2 0 002-2V7M4 7h16M4 7l2-4h12l2 4M9 14h6" />
-                    </svg>
-                  </div>
-                  <span class="font-bold text-slate-800 text-[11px] sm:text-xs leading-tight">Lector SmartCard</span>
-                </div>
-
-                <!-- 3. APP IDPerú -->
-                <div
-                  class="flex items-center gap-2 bg-white p-2 rounded-lg border border-slate-200/90 shadow-xs hover:border-[#94b8dc] transition-colors">
-                  <div
-                    class="w-7 h-7 rounded-md bg-emerald-50 text-emerald-700 flex items-center justify-center shrink-0 border border-emerald-100">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <rect x="7" y="2" width="10" height="20" rx="2" stroke-width="2" />
-                      <circle cx="12" cy="18" r="1" fill="currentColor" />
-                    </svg>
-                  </div>
-                  <span class="font-bold text-slate-800 text-[11px] sm:text-xs leading-tight">APP IDPerú</span>
-                </div>
-
-                <!-- 4. Navegador Microsoft Edge -->
-                <div
-                  class="flex items-center gap-2 bg-white p-2 rounded-lg border border-slate-200/90 shadow-xs hover:border-[#94b8dc] transition-colors">
-                  <div
-                    class="w-7 h-7 rounded-md bg-sky-50 text-sky-700 flex items-center justify-center shrink-0 border border-sky-100">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <circle cx="12" cy="12" r="9" stroke-width="2" />
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M3.6 9h16.8M3.6 15h16.8M12 3a15.3 15.3 0 014 9 15.3 15.3 0 01-4 9 15.3 15.3 0 01-4-9 15.3 15.3 0 014-9z" />
-                    </svg>
-                  </div>
-                  <span class="font-bold text-slate-800 text-[11px] sm:text-xs leading-tight">Navegador Microsoft
-                    Edge</span>
-                </div>
-
-              </div>
-            </div>
-          </div>
-        </div>
-      </article>
+   
 
     </main>
 
