@@ -35,7 +35,7 @@ export interface LocationOption {
   email: string;
   photo: string;
   sioActive: boolean;
-  sioCaptureMode?: 'SEMIAUTOMÁTICA' | 'MANUAL';
+  sioCaptureMode?: 'SEMIAUTOMÁTICA' | 'MANUAL'| 'CAPTURA EN VIVO';
   sioDeliveryMethod?: string;
   biofacialActive: boolean;
   sircmActive: boolean;
@@ -65,8 +65,8 @@ export class App {
       email: 'info@consuladoperumadrid.org',
       photo: 'MADRID.jpg',
       sioActive: true,
-      sioCaptureMode: 'SEMIAUTOMÁTICA',
-      sioDeliveryMethod: 'Valija diplomática',
+      sioCaptureMode: 'CAPTURA EN VIVO',
+      sioDeliveryMethod: 'DHL - SEMANAL',
       biofacialActive: true,
       sircmActive: true,
       ciudadanoDigitalActive: true,
