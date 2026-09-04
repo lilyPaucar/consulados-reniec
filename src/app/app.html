@@ -267,7 +267,7 @@
     </article>
 
      
-    <!-- ==================== TARJETA: TRÁMITES DE DNI / SIO ==================== -->
+    <!-- ==================== TARJETA: TRÁMITES DE DNI /  ==================== -->
     <article
       class="relative bg-white rounded-2xl shadow-sm border border-slate-200/90 overflow-hidden flex flex-col hover:shadow-md transition-shadow">
 
@@ -388,8 +388,7 @@
             </svg>
 
             <span class="font-extrabold text-[#0f3b75] text-xs leading-tight">
-              DNI para<br>
-              mayores de edad
+              Inscripción de DNI para mayores de edad
             </span>
 
             <span class="text-[10px] font-semibold text-slate-600 leading-tight mt-1">
@@ -419,8 +418,7 @@
             </svg>
 
             <span class="font-extrabold text-[#0f3b75] text-xs leading-tight">
-              DNI para<br>
-              menores de edad
+               Inscripción de DNI para menores de edad
             </span>
 
           </div>
@@ -621,7 +619,6 @@
 
             <button
               type="button"
-              [disabled]="!selectedLocation().sioActive"
               (click)="openDocumentsModal('sio')"
               class="mt-1.5 inline-flex items-center gap-1.5 text-[#0f3b75] font-extrabold text-xs sm:text-sm hover:text-[#c01823] disabled:opacity-40 disabled:pointer-events-none transition-colors cursor-pointer">
               <svg class="w-4 h-4 text-[#c01823]" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
@@ -658,7 +655,7 @@
 
       </div>
 
-      <!-- OVERLAY DE BLOQUEO CUANDO ESTÁ INACTIVO -->
+      <!-- OVERLAY DE BLOQUEO CUANDO ESTÁ INACTIVO 
       @if (!selectedLocation().sioActive) {
       <div class="absolute inset-0 z-20 bg-slate-900/40 backdrop-blur-[2px] rounded-2xl flex flex-col items-center justify-center p-6 text-center animate-in fade-in duration-200">
         <div class="bg-white/95 text-slate-900 px-6 py-5 rounded-2xl shadow-xl border border-slate-200 max-w-sm flex flex-col items-center">
@@ -674,7 +671,7 @@
         </div>
       </div>
       }
-
+-->
     </article>
       <!-- ========================================================= -->
       <!-- TARJETA: TRÁMITES EN LÍNEA / APP DNI BIOFACIAL -->
@@ -986,6 +983,7 @@
             </div>
 
           <!-- ==================== AVISO IMPORTANTE MEJORADO Y CONDICIONAL ==================== -->
+         
           @if (selectedLocation().importantNotice) {
           <div
             class="mt-4 rounded-xl bg-gradient-to-r from-red-600 via-[#c01823] to-rose-700 p-3.5 sm:p-4 text-white shadow-sm border border-red-400/30 animate-in fade-in duration-200">
@@ -1018,7 +1016,7 @@
           </div>
           }
           </div>
-
+        </div>
           <!-- ======================================================= -->
           <!-- PARTE INFERIOR (2 COLUMNAS) -->
           <!-- ======================================================= -->
@@ -1139,7 +1137,7 @@
 
           </div>
 
-        </div>
+      
 
         <!-- OVERLAY DE BLOQUEO CUANDO ESTÁ INACTIVO -->
         @if (!selectedLocation().biofacialActive) {
@@ -1511,8 +1509,6 @@
       </div>
       <div class="flex items-center gap-3 text-xs font-bold">
         <span class="bg-emerald-100 text-emerald-800 px-2.5 py-1 rounded-full">{{ selectedServiceDocs()?.badge }}</span>
-        <span class="text-slate-900 bg-white border border-slate-200 px-2.5 py-1 rounded-full">Costo: <strong>{{
-            selectedServiceDocs()?.cost }}</strong></span>
       </div>
     </div>
 

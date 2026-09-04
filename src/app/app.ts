@@ -14,7 +14,6 @@ export interface ServiceDocumentsInfo {
   title: string;
   subtitle: string;
   badge: string;
-  cost: string;
   deliveryTime: string;
   documents: DocumentItem[];
   tips: string[];
@@ -60,7 +59,7 @@ export class App {
     {
       city: 'Madrid',
       country: 'España',
-      phone: '+34-91-5629022 Ó +34-91-5629012 , SOLO EMERGENCIA: +34-669701608',
+      phone: '+34-91-5629022 Ó +34-91-5629012',
       whatsappPhone: '+34669701608',
       address: '28008, P.º del Pintor Rosales, 30, 28008 Madrid, España',
       email: 'info@consuladoperumadrid.org',
@@ -83,8 +82,33 @@ export class App {
           days: 'Martes y Jueves',
           consularHours: '15:00 – 18:00 h (Hora España)',
           peruHours: '08:00 – 11:00 h (Hora Perú)',
-          modality: '(Entrega de DNI y pasaportes sin cita)'
+          modality: '(Entrega de DNI sin cita)'
         }
+      ]
+    },
+       {
+      city: 'Accra',
+      country: 'Ghana',
+      phone: '+233 30 397 2751',
+      whatsappPhone: '+233303972751',
+      address: '10 Agbaamo Street, Accra - Ghana (Referencia: Airport Residential Area)',
+      email: 'consulperu-acra@rree.gob.pe',
+      photo: 'ghana.png',
+      sioActive: false,
+      sioCaptureMode: 'MANUAL',
+      sioDeliveryMethod: 'Valija diplomática',
+      biofacialActive: false,
+      sircmActive: false,
+      ciudadanoDigitalActive: false,
+      importantNotice: 'Si usted tramitó su DNI a través de la aplicación DNI Biofacial web RENIEC, deberá acercarse al consulado personalmente para recoger su DNI debido a que se requiere la toma de huellas para la entrega. No se aceptan cartas poder.',
+      schedules: [
+        {
+          days: 'De Lunes a Viernes',
+          consularHours: '8:00 – 12:30 h (Hora Accra)',
+          peruHours: '03:30 – 07:30 h (Hora Perú)',
+          modality: '(Trámites presenciales con cita previa)'
+        },
+       
       ]
     },
     {
@@ -283,7 +307,6 @@ export class App {
       title: 'App DNI Biofacial',
       subtitle: 'Renovación, Duplicado y Actualización de Domicilio Digital',
       badge: 'Trámite Digital',
-      cost: 'S/ 30.00',
       deliveryTime: '26 mins en validación digital',
       documents: [
         {
@@ -313,14 +336,14 @@ export class App {
           iconType: 'home',
           tag: 'Si aplica',
           tagColor: 'bg-amber-100 text-amber-800'
-        },
+        } /*,
         {
           name: 'Declaración jurada de estado civil',
           description: 'Formato digital para actualizar estado civil en caso corresponda.',
           iconType: 'file-text',
           tag: 'Opcional',
           tagColor: 'bg-slate-100 text-slate-700'
-        }
+        }*/
       ],
       tips: [
         'Realice la captura facial en un ambiente bien iluminado sin sombras pronunciadas.',
@@ -332,9 +355,8 @@ export class App {
       serviceId: 'sio',
       title: 'SIO - Sistema Integrado Operativo',
       subtitle: 'Inscripción por primera vez, Canje de Libreta y Recojo de DNI',
-      badge: 'Modalidad Presencial / Semiautomática o Manual',
-      cost: 'S/ 10.00',
-      deliveryTime: '25 mins de atención presencial',
+      badge: 'Modalidad Presencial',
+      deliveryTime: '25 mins aprox. de atención presencial',
       documents: [
         {
           name: 'Copia certificada de Acta de Nacimiento',
@@ -352,7 +374,7 @@ export class App {
         },
         {
           name: 'Documento de identidad local / Residencia',
-          description: 'NIE, DNI extranjero, pasaporte o permiso de residencia vigente en el país de estancia.',
+          description: 'DNI extranjero, pasaporte o permiso de residencia vigente en el país de estancia.',
           iconType: 'id-card',
           tag: 'Identificación',
           tagColor: 'bg-blue-100 text-blue-700'
@@ -373,7 +395,7 @@ export class App {
         }
       ],
       tips: [
-        'La captura biométrica (huellas dactilares y foto) se realiza según la modalidad consular (semiautomática o manual).',
+        'La captura biométrica (huellas dactilares y foto) se realiza según la modalidad consular.',
         'El DNI físico se envía desde Lima vía Valija diplomática.',
         'Puede verificar en línea cuando su DNI esté disponible para recojo en el consulado.'
       ]
