@@ -20,13 +20,29 @@ export interface ServiceDocumentsInfo {
   tips: string[];
 }
 
-interface LocationOption {
+export interface ScheduleShift {
+  days: string;
+  consularHours: string;
+  peruHours: string;
+  modality: string;
+}
+
+export interface LocationOption {
   city: string;
   country: string;
   phone: string;
+  whatsappPhone?: string;
   address: string;
   email: string;
   photo: string;
+  sioActive: boolean;
+  sioCaptureMode?: 'SEMIAUTOMÁTICA' | 'MANUAL';
+  sioDeliveryMethod?: string;
+  biofacialActive: boolean;
+  sircmActive: boolean;
+  ciudadanoDigitalActive: boolean;
+  importantNotice?: string | null;
+  schedules: ScheduleShift[];
 }
 
 @Component({
@@ -45,66 +61,211 @@ export class App {
       city: 'Madrid',
       country: 'España',
       phone: '+34-91-5629022 Ó +34-91-5629012 , SOLO EMERGENCIA: +34-669701608',
+      whatsappPhone: '+34669701608',
       address: '28008, P.º del Pintor Rosales, 30, 28008 Madrid, España',
       email: 'info@consuladoperumadrid.org',
-      photo: 'MADRID.jpg'
-      
+      photo: 'MADRID.jpg',
+      sioActive: true,
+      sioCaptureMode: 'SEMIAUTOMÁTICA',
+      sioDeliveryMethod: 'Valija diplomática',
+      biofacialActive: true,
+      sircmActive: true,
+      ciudadanoDigitalActive: true,
+      importantNotice: 'Si usted tramitó su DNI a través de la aplicación DNI Biofacial web RENIEC, deberá acercarse al consulado personalmente para recoger su DNI debido a que se requiere la toma de huellas para la entrega. No se aceptan cartas poder.',
+      schedules: [
+        {
+          days: 'De Lunes a Viernes',
+          consularHours: '08:30 – 14:00 h (Hora España)',
+          peruHours: '01:30 – 07:00 h (Hora Perú)',
+          modality: '(Trámites presenciales con cita previa)'
+        },
+        {
+          days: 'Martes y Jueves',
+          consularHours: '15:00 – 18:00 h (Hora España)',
+          peruHours: '08:00 – 11:00 h (Hora Perú)',
+          modality: '(Entrega de DNI y pasaportes sin cita)'
+        }
+      ]
     },
     {
       city: 'Barcelona',
       country: 'España',
       phone: '+34 932 154 321',
+      whatsappPhone: '+34932154321',
       address: 'Passeig de Gràcia, 45, 08007 Barcelona, España',
       email: 'informes@consuladoperubarcelona.es',
-      photo: 'MADRID.jpg'
+      photo: 'MADRID.jpg',
+      sioActive: true,
+      sioCaptureMode: 'SEMIAUTOMÁTICA',
+      sioDeliveryMethod: 'Valija diplomática',
+      biofacialActive: true,
+      sircmActive: true,
+      ciudadanoDigitalActive: true,
+      importantNotice: null,
+      schedules: [
+        {
+          days: 'De Lunes a Viernes',
+          consularHours: '09:00 – 14:00 h (Hora España)',
+          peruHours: '02:00 – 07:00 h (Hora Perú)',
+          modality: '(Atención con cita electrónica)'
+        },
+        {
+          days: 'Viernes',
+          consularHours: '14:30 – 16:30 h (Hora España)',
+          peruHours: '07:30 – 09:30 h (Hora Perú)',
+          modality: '(Recojo exclusivo de documentos)'
+        }
+      ]
     },
     {
       city: 'Valencia',
       country: 'España',
       phone: '+34 963 852 741',
+      whatsappPhone: '+34963852741',
       address: 'Plaza del Ayuntamiento, 12, 46002 Valencia, España',
       email: 'valencia@consuladoperu.es',
-      photo: 'MADRID.jpg'
+      photo: 'MADRID.jpg',
+      sioActive: true,
+      sioCaptureMode: 'MANUAL',
+      sioDeliveryMethod: 'Valija diplomática',
+      biofacialActive: false,
+      sircmActive: true,
+      ciudadanoDigitalActive: false,
+      importantNotice: 'El servicio App Biofacial y Certificados Digitales se encuentran en mantenimiento técnico. Para trámites biométricos presenciales acudir con cita SIO.',
+      schedules: [
+        {
+          days: 'De Lunes a Viernes',
+          consularHours: '08:30 – 13:30 h (Hora España)',
+          peruHours: '01:30 – 06:30 h (Hora Perú)',
+          modality: '(Atención presencial regular)'
+        }
+      ]
     },
     {
       city: 'París',
       country: 'Francia',
       phone: '+33 1 42 61 58 00',
+      whatsappPhone: '+33142615800',
       address: '50 Avenue Kléber, 75116 Paris, France',
       email: 'consulat.perou@paris.fr',
-      photo: 'MADRID.jpg'
+      photo: 'MADRID.jpg',
+      sioActive: true,
+      sioCaptureMode: 'SEMIAUTOMÁTICA',
+      sioDeliveryMethod: 'Valija diplomática',
+      biofacialActive: true,
+      sircmActive: true,
+      ciudadanoDigitalActive: false,
+      importantNotice: null,
+      schedules: [
+        {
+          days: 'De Lunes a Viernes',
+          consularHours: '09:00 – 14:30 h (Hora Francia)',
+          peruHours: '02:00 – 07:30 h (Hora Perú)',
+          modality: '(Trámites consulares con cita)'
+        }
+      ]
     },
     {
       city: 'Milán',
       country: 'Italia',
       phone: '+39 02 7600 6093',
+      whatsappPhone: '+390276006093',
       address: 'Via Pantano, 13, 20122 Milano, Italia',
       email: 'informes@consuladoperumilan.it',
-      photo: 'MADRID.jpg'
+      photo: 'MADRID.jpg',
+      sioActive: true,
+      sioCaptureMode: 'SEMIAUTOMÁTICA',
+      sioDeliveryMethod: 'Valija diplomática',
+      biofacialActive: true,
+      sircmActive: true,
+      ciudadanoDigitalActive: true,
+      importantNotice: 'El recojo de DNI físico procesado en Lima se efectúa únicamente los días miércoles y viernes con ticket digital.',
+      schedules: [
+        {
+          days: 'De Lunes a Viernes',
+          consularHours: '08:30 – 13:30 h (Hora Italia)',
+          peruHours: '01:30 – 06:30 h (Hora Perú)',
+          modality: '(Atención general con cita previa)'
+        },
+        {
+          days: 'Miércoles y Viernes',
+          consularHours: '14:00 – 16:30 h (Hora Italia)',
+          peruHours: '07:00 – 09:30 h (Hora Perú)',
+          modality: '(Entrega de documentos procesados)'
+        }
+      ]
     },
     {
       city: 'Buenos Aires',
       country: 'Argentina',
       phone: '+54 11 4802 2000',
+      whatsappPhone: '+541148022000',
       address: 'San Martín 128, C1004 AAD Buenos Aires, Argentina',
       email: 'consultas@consuladoperubaires.org',
-      photo: 'MADRID.jpg'
+      photo: 'MADRID.jpg',
+      sioActive: true,
+      sioCaptureMode: 'MANUAL',
+      sioDeliveryMethod: 'Valija diplomática',
+      biofacialActive: true,
+      sircmActive: true,
+      ciudadanoDigitalActive: true,
+      importantNotice: 'Inscripción SIO de recién nacidos requiere presentar acta consular previa registrada en el sistema SIRCM.',
+      schedules: [
+        {
+          days: 'De Lunes a Viernes',
+          consularHours: '09:00 – 14:00 h (Hora Argentina)',
+          peruHours: '07:00 – 12:00 h (Hora Perú)',
+          modality: '(Trámites consulares y DNI)'
+        }
+      ]
     },
     {
       city: 'Santiago',
       country: 'Chile',
       phone: '+56 2 2362 9300',
+      whatsappPhone: '+56223629300',
       address: 'Av. Andrés Bello 1751, Providencia, Santiago, Chile',
       email: 'contacto@consuladoperuchile.cl',
-      photo: 'MADRID.jpg'
+      photo: 'MADRID.jpg',
+      sioActive: true,
+      sioCaptureMode: 'MANUAL',
+      sioDeliveryMethod: 'Valija diplomática',
+      biofacialActive: false,
+      sircmActive: true,
+      ciudadanoDigitalActive: false,
+      importantNotice: null,
+      schedules: [
+        {
+          days: 'De Lunes a Viernes',
+          consularHours: '08:30 – 13:30 h (Hora Chile)',
+          peruHours: '06:30 – 11:30 h (Hora Perú)',
+          modality: '(Atención con reserva de turno online)'
+        }
+      ]
     },
     {
       city: 'Miami',
       country: 'Estados Unidos',
       phone: '+1 305 373 8520',
+      whatsappPhone: '+13053738520',
       address: '2801 Ponce de Leon Blvd, Coral Gables, FL 33134, EE.UU.',
       email: 'info@consuladoperumiami.gov',
-      photo: 'MADRID.jpg'
+      photo: 'MADRID.jpg',
+      sioActive: true,
+      sioCaptureMode: 'SEMIAUTOMÁTICA',
+      sioDeliveryMethod: 'Valija diplomática',
+      biofacialActive: true,
+      sircmActive: false,
+      ciudadanoDigitalActive: true,
+      importantNotice: 'Servicio SIRCM en mantenimiento preventivo. Las actas de registro civil se remitirán temporalmente por valija diplomática.',
+      schedules: [
+        {
+          days: 'De Lunes a Viernes',
+          consularHours: '08:30 – 14:00 h (Hora Miami)',
+          peruHours: '07:30 – 13:00 h (Hora Perú)',
+          modality: '(Atención general con cita previa)'
+        }
+      ]
     }
   ];
 
@@ -171,7 +332,7 @@ export class App {
       serviceId: 'sio',
       title: 'SIO - Sistema Integrado Operativo',
       subtitle: 'Inscripción por primera vez, Canje de Libreta y Recojo de DNI',
-      badge: 'Modalidad Presencial / Captura en Vivo',
+      badge: 'Modalidad Presencial / Semiautomática o Manual',
       cost: 'S/ 10.00',
       deliveryTime: '25 mins de atención presencial',
       documents: [
@@ -212,8 +373,8 @@ export class App {
         }
       ],
       tips: [
-        'La captura biométrica (huellas dactilares y foto) se realiza en vivo en la ventanilla consular.',
-        'El DNI físico se envía desde Lima vía valija DHL de forma semanal.',
+        'La captura biométrica (huellas dactilares y foto) se realiza según la modalidad consular (semiautomática o manual).',
+        'El DNI físico se envía desde Lima vía Valija diplomática.',
         'Puede verificar en línea cuando su DNI esté disponible para recojo en el consulado.'
       ]
     }
