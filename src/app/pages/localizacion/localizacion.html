@@ -1,0 +1,352 @@
+<div class="relative w-full h-screen overflow-hidden bg-[#051124] text-white flex flex-col font-sans select-none">
+
+  <!-- ==================== TOP NAVIGATION BAR ==================== -->
+  <header
+    class="absolute top-0 left-0 right-0 z-30 flex items-center justify-between px-4 sm:px-8 py-4 bg-gradient-to-b from-[#051124]/95 via-[#051124]/75 to-transparent backdrop-blur-xs">
+
+    <!-- Logo RENIEC & Branding -->
+    <div class="flex items-center gap-3 sm:gap-4">
+      <a routerLink="/" class="cursor-pointer hover:opacity-90 transition-opacity shrink-0">
+        <img src="reniec-logo.png" alt="RENIEC Perú" class="h-10 sm:h-12 w-auto object-contain brightness-110" />
+      </a>
+      <div class="border-l border-blue-800/80 pl-3 sm:pl-4">
+
+        <h1 class="text-base sm:text-xl font-black text-white uppercase tracking-tight font-['Montserrat']">
+          Consulados
+        </h1>
+      </div>
+    </div>
+
+    <!-- Top Right Actions -->
+    <div class="flex items-center gap-2.5">
+
+
+      <a routerLink="/" title="Ir al inicio"
+        class="p-2 sm:px-3 sm:py-2 rounded-xl bg-slate-800/70 hover:bg-slate-700 border border-slate-700 text-slate-300 hover:text-white transition-all cursor-pointer flex items-center gap-1.5 text-xs font-semibold">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+        </svg>
+        <span class="hidden md:inline">Inicio</span>
+      </a>
+    </div>
+
+  </header>
+
+  <!-- ==================== 3D GLOBE CANVAS CONTAINER ==================== -->
+  <main #containerRef class="relative flex-1 w-full h-full cursor-grab active:cursor-grabbing overflow-hidden">
+    <canvas #globeCanvas class="w-full h-full block"></canvas>
+
+    <!-- Starfield particles / ambient background glow -->
+    <div
+      class="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(15,59,117,0.25)_0%,rgba(5,17,36,0.95)_100%)]">
+    </div>
+
+    <!-- Instruction Hint -->
+    <div
+      class="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-20 pointer-events-none hidden sm:flex items-center gap-2 px-4 py-1.5 rounded-full bg-slate-900/80 border border-blue-500/30 backdrop-blur-md text-[11px] text-blue-200/90 shadow-xl">
+      <svg class="w-3.5 h-3.5 text-blue-400 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+          d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+      </svg>
+      <span>Arrastre para girar la esfera 3D &bull; Scroll para Zoom &bull; Clic en un país para ver sus
+        consulados</span>
+    </div>
+
+    <!-- ==================== 3D FLOATING CONTROLS ==================== -->
+    <div class="absolute bottom-24 right-4 sm:right-6 z-20 flex flex-col gap-2">
+      <!-- Zoom In -->
+      <button type="button" (click)="zoomIn()" title="Acercar (Zoom In)"
+        class="w-10 h-10 rounded-xl bg-slate-900/80 hover:bg-blue-900/90 border border-blue-500/40 text-white flex items-center justify-center shadow-lg backdrop-blur-md transition-all cursor-pointer">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4v16m8-8H4" />
+        </svg>
+      </button>
+
+      <!-- Zoom Out -->
+      <button type="button" (click)="zoomOut()" title="Alejar (Zoom Out)"
+        class="w-10 h-10 rounded-xl bg-slate-900/80 hover:bg-blue-900/90 border border-blue-500/40 text-white flex items-center justify-center shadow-lg backdrop-blur-md transition-all cursor-pointer">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M20 12H4" />
+        </svg>
+      </button>
+
+      <!-- Toggle Auto-Rotation -->
+      <button type="button" (click)="toggleAutoRotate()"
+        [title]="autoRotate() ? 'Pausar Rotación Automática' : 'Activar Rotación Automática'"
+        class="w-10 h-10 rounded-xl border flex items-center justify-center shadow-lg backdrop-blur-md transition-all cursor-pointer"
+        [class.bg-blue-600]="autoRotate()" [class.border-blue-400]="autoRotate()"
+        [class.bg-slate-900/80]="!autoRotate()" [class.border-slate-700]="!autoRotate()">
+        <svg class="w-5 h-5 text-white" [class.animate-spin]="autoRotate()" fill="none" stroke="currentColor"
+          viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+        </svg>
+      </button>
+
+      <!-- Reset View -->
+      <button type="button" (click)="resetView()" title="Centrar Vista Inicial"
+        class="w-10 h-10 rounded-xl bg-slate-900/80 hover:bg-blue-900/90 border border-blue-500/40 text-white flex items-center justify-center shadow-lg backdrop-blur-md transition-all cursor-pointer">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+            d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3" />
+        </svg>
+      </button>
+    </div>
+
+  </main>
+
+  <!-- ==================== CONTINENT QUICK SELECTOR BAR (BOTTOM) ==================== -->
+  <footer class="absolute bottom-3 left-0 right-0 z-30 px-3 sm:px-6 flex justify-center pointer-events-none">
+    <div
+      class="pointer-events-auto bg-slate-900/90 backdrop-blur-md border border-blue-500/40 p-2 rounded-2xl shadow-2xl flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 max-w-full overflow-x-auto">
+
+      <span class="text-[11px] font-black text-blue-300 uppercase tracking-wider px-2 hidden lg:inline">
+        Continentes:
+      </span>
+
+      @for (cont of continents; track cont.id) {
+      <button type="button" (click)="focusContinent(cont)" [class.ring-2]="selectedContinent()?.id === cont.id"
+        [class.ring-white]="selectedContinent()?.id === cont.id" [class.scale-105]="selectedContinent()?.id === cont.id"
+        class="px-3 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-bold flex items-center gap-2 border transition-all cursor-pointer bg-slate-800/80 hover:bg-slate-700/90"
+        [class.border-white]="selectedContinent()?.id === cont.id"
+        [class.border-slate-700]="selectedContinent()?.id !== cont.id">
+
+        <!-- Continent Color Dot -->
+        <span class="w-3 h-3 rounded-full shadow-sm" [style.backgroundColor]="cont.color"></span>
+        <span class="text-white">{{ cont.name }}</span>
+
+        <!-- Country count badge -->
+        <span class="text-[10px] font-extrabold px-1.5 py-0.2 rounded-md bg-white/10 text-slate-300">
+          {{ cont.countries.length }}
+        </span>
+      </button>
+      }
+
+    </div>
+  </footer>
+
+  <!-- ==================== SIDEBAR / DRAWER DE PAÍSES Y CONSULADOS ==================== -->
+  @if (isSidebarOpen() && selectedContinent()) {
+  <aside
+    class="absolute top-20 right-3 sm:right-6 bottom-20 w-[92vw] sm:w-[420px] max-w-full z-40 bg-slate-900/95 backdrop-blur-xl border border-blue-500/40 rounded-3xl shadow-2xl flex flex-col overflow-hidden animate-in fade-in slide-in-from-right-6 duration-200">
+
+    <!-- Sidebar Header -->
+    <div
+      class="p-4 sm:p-5 border-b border-blue-900/50 flex items-center justify-between gap-3 bg-gradient-to-r from-blue-950/60 to-slate-900/60">
+      <div class="flex items-center gap-3">
+        <div class="w-4 h-4 rounded-full animate-pulse shadow-md" [style.backgroundColor]="selectedContinent()!.color">
+        </div>
+        <div>
+          <span class="text-[10px] font-extrabold uppercase tracking-widest text-blue-300 block">
+            Continente Seleccionado
+          </span>
+          <h2 class="text-lg sm:text-xl font-black text-white leading-tight">
+            {{ selectedContinent()!.name }}
+          </h2>
+        </div>
+      </div>
+
+      <button type="button" (click)="closeSidebar()"
+        class="w-8 h-8 rounded-full bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white flex items-center justify-center cursor-pointer transition-colors"
+        title="Cerrar panel">
+        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M6 18L18 6M6 6l12 12" />
+        </svg>
+      </button>
+    </div>
+
+    <!-- Continents Description & Stats Pill -->
+    <div class="px-5 py-3 bg-blue-950/40 border-b border-blue-900/40 flex items-center justify-between gap-2 text-xs">
+      <span class="text-slate-300 font-medium truncate">{{ selectedContinent()!.description }}</span>
+      <span
+        class="font-bold text-blue-200 px-2.5 py-0.5 rounded-full bg-blue-900/70 border border-blue-700/60 shrink-0">
+        {{ selectedContinent()!.countries.length }} {{ selectedContinent()!.countries.length === 1 ? 'País' : 'Países'
+        }}
+      </span>
+    </div>
+
+    <!-- Countries & Consulates List (Scrollable) -->
+    <div class="p-4 sm:p-5 flex-1 overflow-y-auto space-y-4">
+
+      <div class="text-xs font-bold text-blue-300 uppercase tracking-wider">
+        Países con Consulados del Perú:
+      </div>
+
+      @for (country of selectedContinent()!.countries; track country.name) {
+      <div
+        class="bg-slate-800/80 hover:bg-slate-800 border border-slate-700/80 hover:border-blue-500/60 rounded-2xl p-4 transition-all space-y-3">
+
+        <!-- Country Header with Flag & Navigate button -->
+        <div class="flex items-center justify-between gap-3">
+          <div class="flex items-center gap-2.5">
+            <span class="text-3xl drop-shadow-sm">{{ country.flag }}</span>
+            <div>
+              <h3 class="font-black text-base text-white leading-tight">
+                {{ country.name }}
+              </h3>
+              <span class="text-xs text-slate-400 font-semibold">
+                {{ country.cities.length }} {{ country.cities.length === 1 ? 'Sede Consular' : 'Sedes Consulares' }}
+              </span>
+            </div>
+          </div>
+
+          <button type="button" (click)="selectCountry(country)"
+            class="px-3 py-1.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-bold text-xs flex items-center gap-1.5 shadow-sm hover:shadow-md transition-all cursor-pointer">
+            <span>Ver Cartera</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Consular Cities List in Country -->
+        <div class="pt-2 border-t border-slate-700/60 space-y-2">
+          @for (city of country.cities; track city.city) {
+          <div (click)="selectCity(city)"
+            class="p-2.5 rounded-xl bg-slate-900/70 hover:bg-blue-950/80 border border-slate-700/60 hover:border-blue-500/50 transition-all cursor-pointer flex items-center justify-between gap-2 group">
+
+            <div class="min-w-0">
+              <div class="flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full" [style.backgroundColor]="selectedContinent()!.color"></span>
+                <span class="font-extrabold text-sm text-slate-200 group-hover:text-blue-300">
+                  Consulado en {{ city.city }}
+                </span>
+              </div>
+              <p class="text-[11px] text-slate-400 truncate mt-0.5">{{ city.address }}</p>
+            </div>
+
+            <!-- Service indicator badges -->
+            <div class="flex items-center gap-1 shrink-0">
+              @if (city.sioActive) {
+              <span class="w-2 h-2 rounded-full bg-emerald-400" title="SIO Presencial Activo"></span>
+              }
+              @if (city.biofacialActive) {
+              <span class="w-2 h-2 rounded-full bg-blue-400" title="Biofacial En Línea Activo"></span>
+              }
+              @if (city.ciudadanoDigitalActive) {
+              <span class="w-2 h-2 rounded-full bg-red-400" title="Ciudadano Digital Activo"></span>
+              }
+              <svg
+                class="w-4 h-4 text-slate-500 group-hover:text-blue-300 group-hover:translate-x-0.5 transition-all ml-1"
+                fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+
+          </div>
+          }
+        </div>
+
+      </div>
+      }
+
+    </div>
+
+    <!-- Sidebar Footer -->
+    <div class="p-4 bg-slate-950/80 border-t border-blue-900/50 flex items-center justify-between gap-2">
+      <span class="text-[11px] text-slate-400 font-medium">RENIEC &bull; Cartera de Servicios</span>
+      <button type="button" (click)="selectCountry(selectedContinent()!.countries[0])"
+        class="text-xs font-bold text-blue-300 hover:text-white underline cursor-pointer">
+        Abrir primer país →
+      </button>
+    </div>
+
+  </aside>
+  }
+
+  <!-- ==================== FLOATING INTERACTIVE HOVER TOOLTIP ==================== -->
+  @if (hoveredMarker()) {
+  <div
+    class="fixed z-50 pointer-events-none transform -translate-x-1/2 -translate-y-full mb-3 animate-in fade-in zoom-in-95 duration-100"
+    [style.left.px]="hoveredMarker()!.screenX" [style.top.px]="hoveredMarker()!.screenY - 14">
+
+    <div
+      class="bg-slate-900/95 backdrop-blur-xl text-white rounded-2xl p-4 shadow-2xl border flex flex-col gap-2 min-w-[280px] max-w-[340px]"
+      [style.borderColor]="hoveredMarker()!.continent.color">
+
+      <!-- Header: Flag & Country -->
+      <div class="flex items-center justify-between gap-2">
+        <div class="flex items-center gap-2.5">
+          <span class="text-3xl drop-shadow-sm">{{ hoveredMarker()!.country.flag }}</span>
+          <div>
+            <div class="text-[10px] font-extrabold uppercase tracking-wider text-slate-400">
+              País con Sedes Consulares
+            </div>
+            <h4 class="font-black text-base text-white leading-tight">
+              {{ hoveredMarker()!.country.name }}
+            </h4>
+          </div>
+        </div>
+
+        <span class="text-[10px] font-extrabold px-2.5 py-0.5 rounded-md text-white shrink-0 shadow-xs"
+          [style.backgroundColor]="hoveredMarker()!.continent.color">
+          {{ hoveredMarker()!.continent.name }}
+        </span>
+      </div>
+
+      <!-- Consulates count badge and cities list -->
+      <div class="pt-2 border-t border-slate-800 space-y-1.5">
+        <div class="flex items-center justify-between text-xs">
+          <span class="text-slate-300 font-semibold">Total Sedes:</span>
+          <span class="font-extrabold text-blue-300 bg-blue-950/80 border border-blue-800/60 px-2 py-0.5 rounded-full">
+            {{ hoveredMarker()!.country.cities.length }} {{ hoveredMarker()!.country.cities.length === 1 ? 'Sede
+            Consular' : 'Sedes Consulares' }}
+          </span>
+        </div>
+
+        <!-- Cities chips preview -->
+        <div class="text-[11px] text-slate-300 flex flex-wrap gap-1 pt-1">
+          @for (c of hoveredMarker()!.country.cities.slice(0, 4); track c.city) {
+          <span class="px-2 py-0.5 rounded-md bg-slate-800/90 text-slate-200 border border-slate-700/70 font-medium">
+            {{ c.city }}
+          </span>
+          }
+          @if (hoveredMarker()!.country.cities.length > 4) {
+          <span
+            class="px-1.5 py-0.5 rounded-md bg-blue-950/80 text-blue-300 border border-blue-800/50 font-bold text-[10px]">
+            +{{ hoveredMarker()!.country.cities.length - 4 }} más
+          </span>
+          }
+        </div>
+      </div>
+
+      <!-- Operational Services Indicators -->
+      <div class="flex flex-wrap items-center gap-1.5 pt-1 border-t border-slate-800/80">
+        @if (hasSio(hoveredMarker()!.country)) {
+        <span
+          class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-950/80 text-emerald-300 border border-emerald-600/50 flex items-center gap-1">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+          SIO Presencial
+        </span>
+        }
+        @if (hasBiofacial(hoveredMarker()!.country)) {
+        <span
+          class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-950/80 text-blue-300 border border-blue-600/50">
+          App Biofacial
+        </span>
+        }
+        @if (hasCiudadanoDigital(hoveredMarker()!.country)) {
+        <span
+          class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-red-950/80 text-red-300 border border-red-600/50">
+          DNI Digital
+        </span>
+        }
+      </div>
+
+      <!-- Click action notice -->
+      <div
+        class="pt-2 border-t border-slate-800/80 flex items-center justify-center text-[11px] font-black text-amber-300 bg-amber-950/20 py-1 rounded-lg border border-amber-500/20">
+        👉 Clic para ver consulados de {{ hoveredMarker()!.country.name }}
+      </div>
+
+    </div>
+
+    <!-- Triangle arrow pointing down to pin -->
+    <div class="w-3 h-3 bg-slate-900 rotate-45 transform -translate-y-1.5 mx-auto border-r border-b"
+      [style.borderColor]="hoveredMarker()!.continent.color"></div>
+
+  </div>
+  }
+
+</div>
