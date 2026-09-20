@@ -200,43 +200,6 @@
           </button>
         </div>
 
-        <!-- Consular Cities List in Country -->
-        <div class="pt-2 border-t border-slate-700/60 space-y-2">
-          @for (city of country.cities; track city.city) {
-          <div (click)="selectCity(city)"
-            class="p-2.5 rounded-xl bg-slate-900/70 hover:bg-blue-950/80 border border-slate-700/60 hover:border-blue-500/50 transition-all cursor-pointer flex items-center justify-between gap-2 group">
-
-            <div class="min-w-0">
-              <div class="flex items-center gap-1.5">
-                <span class="w-2 h-2 rounded-full" [style.backgroundColor]="selectedContinent()!.color"></span>
-                <span class="font-extrabold text-sm text-slate-200 group-hover:text-blue-300">
-                  Consulado en {{ city.city }}
-                </span>
-              </div>
-              <p class="text-[11px] text-slate-400 truncate mt-0.5">{{ city.address }}</p>
-            </div>
-
-            <!-- Service indicator badges -->
-            <div class="flex items-center gap-1 shrink-0">
-              @if (city.sioActive) {
-              <span class="w-2 h-2 rounded-full bg-emerald-400" title="SIO Presencial Activo"></span>
-              }
-              @if (city.biofacialActive) {
-              <span class="w-2 h-2 rounded-full bg-blue-400" title="Biofacial En Línea Activo"></span>
-              }
-              @if (city.ciudadanoDigitalActive) {
-              <span class="w-2 h-2 rounded-full bg-red-400" title="Ciudadano Digital Activo"></span>
-              }
-              <svg
-                class="w-4 h-4 text-slate-500 group-hover:text-blue-300 group-hover:translate-x-0.5 transition-all ml-1"
-                fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-              </svg>
-            </div>
-
-          </div>
-          }
-        </div>
 
       </div>
       }

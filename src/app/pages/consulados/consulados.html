@@ -21,13 +21,13 @@
 
       <!-- Action Buttons & Selector -->
       <div class="flex items-center gap-2.5 shrink-0">
-        
+
         <!-- Button to go to 3D Globe Map -->
-        <a
-          routerLink="/localizacion"
+        <a routerLink="/localizacion"
           class="bg-blue-900/90 hover:bg-[#0f3b75] text-white font-bold text-xs sm:text-sm px-3.5 py-2.5 rounded-xl flex items-center gap-1.5 shadow-sm transition-all cursor-pointer border border-blue-700/50">
           <svg class="w-4 h-4 text-blue-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
           <span class="hidden sm:inline">Mapa Mundi 3D</span>
           <span class="sm:hidden">Mapa</span>
@@ -49,7 +49,8 @@
           @if (isDropdownOpen()) {
           <div
             class="absolute right-0 mt-2 w-72 bg-white rounded-xl shadow-xl border border-slate-200 py-2 z-50 animate-in fade-in slide-in-from-top-2 duration-150 max-h-80 overflow-y-auto">
-            <div class="px-3 py-1.5 text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100 flex items-center justify-between">
+            <div
+              class="px-3 py-1.5 text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-100 flex items-center justify-between">
               <span>Sedes Consulares</span>
               @if (activeCountryFilter()) {
               <span class="text-[10px] text-blue-600 font-extrabold">Filtrado</span>
@@ -69,8 +70,7 @@
 
             @if (activeCountryFilter()) {
             <div class="border-t border-slate-100 pt-1.5 mt-1 px-2">
-              <button
-                (click)="clearCountryFilter(); toggleDropdown()"
+              <button (click)="clearCountryFilter(); toggleDropdown()"
                 class="w-full text-center py-1.5 px-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-colors">
                 Mostrar todas las sedes mundiales
               </button>
@@ -85,7 +85,8 @@
 
     <!-- ==================== BANNER DE FILTRO POR PAÍS ACTIVO ==================== -->
     @if (activeCountryFilter()) {
-    <section class="bg-gradient-to-r from-blue-900 via-[#0f3b75] to-[#1b4d8f] text-white rounded-2xl px-5 py-3.5 shadow-sm flex flex-wrap items-center justify-between gap-3 border border-blue-700/50">
+    <section
+      class="bg-gradient-to-r from-blue-900 via-[#0f3b75] to-[#1b4d8f] text-white rounded-2xl px-5 py-3.5 shadow-sm flex flex-wrap items-center justify-between gap-3 border border-blue-700/50">
       <div class="flex items-center gap-3">
         <span class="text-2xl drop-shadow-xs">🌍</span>
         <div>
@@ -94,7 +95,8 @@
           </div>
           <div class="font-extrabold text-sm sm:text-base text-white">
             Mostrando consulados en: <strong class="text-amber-300 font-black">{{ activeCountryFilter() }}</strong>
-            <span class="ml-2 text-xs bg-blue-950/70 border border-blue-600/60 px-2 py-0.5 rounded-full font-bold text-blue-200">
+            <span
+              class="ml-2 text-xs bg-blue-950/70 border border-blue-600/60 px-2 py-0.5 rounded-full font-bold text-blue-200">
               {{ filteredLocations().length }} {{ filteredLocations().length === 1 ? 'Sede' : 'Sedes' }}
             </span>
           </div>
@@ -102,14 +104,11 @@
       </div>
 
       <div class="flex items-center gap-2">
-        <button
-          type="button"
-          (click)="clearCountryFilter()"
+        <button type="button" (click)="clearCountryFilter()"
           class="px-3.5 py-1.5 rounded-xl bg-white/15 hover:bg-white/25 text-white font-bold text-xs transition-colors cursor-pointer border border-white/25">
           ✕ Quitar Filtro (Ver Todas)
         </button>
-        <a
-          routerLink="/localizacion"
+        <a routerLink="/localizacion"
           class="px-3.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-extrabold text-xs transition-colors cursor-pointer shadow-xs flex items-center gap-1">
           <span>🗺️ Cambiar en Mapa 3D</span>
         </a>
@@ -633,51 +632,7 @@
 
 
         <!-- ==================== BOTONES INFERIORES (2 COLUMNAS) ==================== -->
-        <div class="bg-[#f8fafc] border-t border-slate-200">
 
-          <div class="grid grid-cols-2">
-
-            <!-- REQUISITOS -->
-            <div class="py-3 px-3 text-center border-r border-slate-200">
-
-              <div class="text-[9px] sm:text-[10px] font-black text-[#0f3b75] uppercase tracking-wide">
-                Requisitos del Trámite
-              </div>
-
-              <button type="button" (click)="openDocumentsModal('sio')"
-                class="mt-1.5 inline-flex items-center gap-1.5 text-[#0f3b75] font-extrabold text-xs sm:text-sm hover:text-[#c01823] disabled:opacity-40 disabled:pointer-events-none transition-colors cursor-pointer">
-                <svg class="w-4 h-4 text-[#c01823]" fill="none" stroke="currentColor" stroke-width="2"
-                  viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5h6M9 9h6M9 13h4M5 3h14v18H5z" />
-                </svg>
-                <span>Ver requisitos</span>
-              </button>
-
-            </div>
-
-            <!-- SEGUIMIENTO -->
-            <div class="py-3 px-3 text-center">
-
-              <div class="text-[9px] sm:text-[10px] font-black text-[#0f3b75] uppercase tracking-wide">
-                Seguimiento RENIEC
-              </div>
-
-              <a href="https://serviciosportal.reniec.gob.pe/cetdnipi/inicio.htm" target="_blank"
-                rel="noopener noreferrer"
-                class="mt-1.5 inline-flex items-center gap-1.5 text-[#0f3b75] font-extrabold text-xs sm:text-sm hover:text-[#c01823] transition-colors cursor-pointer">
-                <svg class="w-4 h-4 text-[#0f3b75]" fill="none" stroke="currentColor" stroke-width="2"
-                  viewBox="0 0 24 24">
-                  <circle cx="11" cy="11" r="7" />
-                  <path stroke-linecap="round" d="M20 20l-4-4" />
-                </svg>
-                <span>Ver estado</span>
-              </a>
-
-            </div>
-
-          </div>
-
-        </div>
 
         <!-- OVERLAY DE BLOQUEO CUANDO ESTÁ INACTIVO 
       @if (!selectedLocation().sioActive) {
@@ -814,13 +769,17 @@
                 <svg class="w-8 h-8 sm:w-9 sm:h-9 text-[#0f3b75]" fill="none" stroke="currentColor" stroke-width="1.8"
                   viewBox="0 0 24 24">
 
-                  <!-- Calendario -->
+                  <!-- Renovación / recarga -->
 
-                  <rect x="4" y="5" width="16" height="15" rx="2" />
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M20.5 9A9 9 0 005.1 5.6L3 8" />
 
-                  <path stroke-linecap="round" d="M8 3v4M16 3v4M4 9h16" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M3 3v5h5" />
 
-                  <path stroke-linecap="round" d="M8 13h2M14 13h2M8 17h2M14 17h2" />
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M3.5 15a9 9 0 0015.4 3.4L21 16" />
+
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21v-5h-5" />
 
                 </svg>
 
@@ -836,26 +795,14 @@
                         text-sm sm:text-base
                         leading-tight">
 
-                  Renovación por caducidad del DNIe
+                  Renovación por caducidad del DNI
 
                 </div>
 
               </div>
 
 
-              <!-- FLECHA -->
 
-              <div class="shrink-0 ml-3">
-
-                <svg class="w-6 h-6 text-[#c01823]
-                        group-hover:translate-x-1
-                        transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-
-                </svg>
-
-              </div>
 
             </div>
 
@@ -886,13 +833,138 @@
                 <svg class="w-8 h-8 sm:w-9 sm:h-9 text-[#0f3b75]" fill="none" stroke="currentColor" stroke-width="1.8"
                   viewBox="0 0 24 24">
 
-                  <!-- DNI -->
+                  <!-- Migración de DNI azul a DNI electrónico -->
 
-                  <rect x="3" y="5" width="18" height="14" rx="2" />
+                  <rect x="2.5" y="6" width="7" height="11" rx="1.5" />
 
-                  <circle cx="8" cy="11" r="2" />
+                  <rect x="14.5" y="6" width="7" height="11" rx="1.5" />
 
-                  <path stroke-linecap="round" d="M12 10h5M12 14h5M6 16h5" />
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M10.5 9h3L12 7.5M13.5 14h-3l1.5 1.5" />
+
+                  <path stroke-linecap="round" d="M4.5 10h3M16.5 10h3M16.5 13h3" />
+
+                </svg>
+
+              </div>
+
+
+              <!-- TEXTO -->
+
+              <div class="flex-1 min-w-0">
+
+                <div class="font-extrabold
+                        text-[#0f3b75]
+                        text-sm sm:text-base
+                        leading-tight">
+
+                  Duplicado DNI azul a Electrónico
+
+                </div>
+
+              </div>
+
+
+
+
+            </div>
+
+
+            <!-- =================================================== -->
+            <!-- SERVICIO 3 -->
+            <!-- =================================================== -->
+
+            <div class="group border border-slate-200
+                    rounded-xl bg-white
+                    min-h-[82px]
+                    flex items-center
+                    px-3 sm:px-4
+                    hover:border-[#94b8dc]
+                    hover:shadow-sm
+                    transition-all">
+
+              <!-- ICONO -->
+
+              <div class="w-14 h-14 sm:w-16 sm:h-16
+                      shrink-0
+                      rounded-xl
+                      bg-[#f1f6fc]
+                      flex items-center justify-center
+                      mr-4">
+
+                <svg class="w-8 h-8 sm:w-9 sm:h-9 text-[#0f3b75]" fill="none" stroke="currentColor" stroke-width="1.8"
+                  viewBox="0 0 24 24">
+
+                  <!-- Cambio de domicilio -->
+
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M12 21s7-5.35 7-12a7 7 0 10-14 0c0 6.65 7 12 7 12z" />
+
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M8.5 10.5L12 7.5l3.5 3v4h-7v-4z" />
+
+                  <path stroke-linecap="round" d="M11 14.5V12h2v2.5" />
+
+                </svg>
+
+              </div>
+
+
+              <!-- TEXTO -->
+
+              <div class="flex-1 min-w-0">
+
+                <div class="font-extrabold
+                        text-[#0f3b75]
+                        text-sm sm:text-base
+                        leading-tight">
+
+                  Cambio de domicilio
+
+                </div>
+
+              </div>
+
+
+
+
+            </div>
+
+
+            <!-- =================================================== -->
+            <!-- SERVICIO 4 -->
+            <!-- =================================================== -->
+
+            <div class="group border border-slate-200
+                    rounded-xl bg-white
+                    min-h-[82px]
+                    flex items-center
+                    px-3 sm:px-4
+                    hover:border-[#94b8dc]
+                    hover:shadow-sm
+                    transition-all">
+
+              <!-- ICONO -->
+
+              <div class="w-14 h-14 sm:w-16 sm:h-16
+                      shrink-0
+                      rounded-xl
+                      bg-[#f1f6fc]
+                      flex items-center justify-center
+                      mr-4">
+
+                <svg class="w-8 h-8 sm:w-9 sm:h-9 text-[#0f3b75]" fill="none" stroke="currentColor" stroke-width="1.8"
+                  viewBox="0 0 24 24">
+
+                  <!-- Duplicado de DNI electrónico -->
+
+                  <rect x="6" y="3" width="14" height="11" rx="2" />
+
+                  <rect x="3" y="8" width="14" height="11" rx="2" fill="white" />
+
+                  <circle cx="7.5" cy="13" r="1.5" />
+
+                  <path stroke-linecap="round" d="M11 12h3M11 15h3M6 17h4" />
 
                 </svg>
 
@@ -915,150 +987,12 @@
               </div>
 
 
-              <!-- FLECHA -->
-
-              <div class="shrink-0 ml-3">
-
-                <svg class="w-6 h-6 text-[#c01823]
-                        group-hover:translate-x-1
-                        transition-transform" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24">
-
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
-
-                </svg>
-
-              </div>
-
-            </div>
-
-            <!-- ==================== AVISO IMPORTANTE MEJORADO Y CONDICIONAL ==================== -->
-
-            @if (selectedLocation().importantNotice) {
-            <div
-              class="mt-4 rounded-xl bg-gradient-to-r from-red-600 via-[#c01823] to-rose-700 p-3.5 sm:p-4 text-white shadow-sm border border-red-400/30 animate-in fade-in duration-200">
-
-              <div class="flex items-start gap-3">
-
-                <div
-                  class="w-7 h-7 rounded-lg bg-white/20 backdrop-blur-xs flex items-center justify-center shrink-0 mt-0.5 shadow-2xs">
-                  <svg class="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
-                      d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
-                  </svg>
-                </div>
-
-                <div class="flex-1 min-w-0 text-left">
-                  <div class="flex items-center gap-2 flex-wrap">
-                    <span class="font-black text-xs sm:text-sm uppercase tracking-wider text-red-100">
-                      AVISO IMPORTANTE
-                    </span>
-                    <span class="text-[10px] bg-white/20 text-white font-bold px-2 py-0.5 rounded-full uppercase">
-                      {{ selectedLocation().city }}
-                    </span>
-                  </div>
-
-                  <p class="text-white/95 text-xs sm:text-sm mt-1 leading-relaxed font-medium">
-                    {{ selectedLocation().importantNotice }}
-                  </p>
-                </div>
-
-              </div>
-
-            </div>
-            }
-          </div>
-        </div>
-        <!-- ======================================================= -->
-        <!-- PARTE INFERIOR (2 COLUMNAS) -->
-        <!-- ======================================================= -->
-
-        <div class="bg-[#f8fafc]
-                  border-t border-slate-200">
-
-          <div class="grid grid-cols-2">
-
-            <!-- =================================================== -->
-            <!-- REQUISITOS -->
-            <!-- =================================================== -->
-
-            <div class="py-3 px-3
-                      text-center
-                      border-r border-slate-200">
-
-              <div class="text-[9px] sm:text-[10px]
-                        font-black
-                        text-[#0f3b75]
-                        uppercase tracking-wide">
-                Requisitos del Trámite
-              </div>
-
-              <button type="button" [disabled]="!selectedLocation().biofacialActive"
-                (click)="openDocumentsModal('biofacial')" class="mt-1.5
-                        inline-flex items-center
-                        gap-1.5
-                        text-[#0f3b75]
-                        font-extrabold
-                        text-xs sm:text-sm
-                        hover:text-[#c01823]
-                        disabled:opacity-40 disabled:pointer-events-none
-                        transition-colors cursor-pointer">
-
-                <svg class="w-4 h-4 text-[#c01823]" fill="none" stroke="currentColor" stroke-width="2"
-                  viewBox="0 0 24 24">
-
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 5h6M9 9h6M9 13h4M5 3h14v18H5z" />
-
-                </svg>
-
-                <span>Ver requisitos</span>
-
-              </button>
-
-            </div>
-
-
-            <!-- =================================================== -->
-            <!-- SEGUIMIENTO -->
-            <!-- =================================================== -->
-
-            <div class="py-3 px-3
-                      text-center">
-
-              <div class="text-[9px] sm:text-[10px]
-                        font-black
-                        text-[#0f3b75]
-                        uppercase tracking-wide">
-                Seguimiento RENIEC
-              </div>
-
-              <a href="https://serviciosportal.reniec.gob.pe/cetdnipi/inicio.htm" target="_blank"
-                rel="noopener noreferrer" class="mt-1.5
-                        inline-flex items-center
-                        gap-1.5
-                        text-[#0f3b75]
-                        font-extrabold
-                        text-xs sm:text-sm
-                        hover:text-[#c01823]
-                        transition-colors cursor-pointer">
-
-                <svg class="w-4 h-4 text-[#0f3b75]" fill="none" stroke="currentColor" stroke-width="2"
-                  viewBox="0 0 24 24">
-
-                  <circle cx="11" cy="11" r="7" />
-
-                  <path stroke-linecap="round" d="M20 20l-4-4" />
-
-                </svg>
-
-                <span>Ver estado</span>
-
-              </a>
 
             </div>
 
           </div>
-
         </div>
+
 
 
 
